@@ -1,0 +1,5 @@
+Avant la partie blog : 
+
+Quand on sendmail :
+- un overlay avec un loader de 2 secondes pour masquer les temps de chargement lors d'envoi de données pour inscription par exemple.
+

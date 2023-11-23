@@ -1,0 +1,93 @@
+.containerForm {
+  margin: 0 auto;
+  @include flexMid;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 3px solid var(--border_3);
+  background-color: var(--bg_1);
+  box-shadow: 1px 1px 15px 5px var(--shadow_1);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.entryForm {
+  margin: 0 auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+  label {
+    font-weight: bold;
+    padding-bottom: 5px;
+    font-size: clamp(16px, calc(14px + 0.6vw), 20px);
+    line-height: clamp(20px, calc(20px + 1vw), 33px);
+  }
+
+  input,
+  select,
+  textarea {
+    width: clamp(300px, 50vw, 800px);
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    background-color: var(--components_3);
+    color: var(--text_2);
+    font-size: clamp(16px, calc(14px + 0.6vw), 20px);
+    line-height: clamp(20px, calc(20px + 1vw), 33px);
+  }
+
+  .texteArticle {
+    min-height: 150px;
+  }
+
+  button {
+    width: clamp(250px, 30vw, 450px);
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 10px;
+    transition: all 0.15s;
+    box-shadow: 0px 4px 4px 0px var(--shadow_1);
+    background-color: var(--border_3);
+    color: var(--text_2);
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(3px);
+      box-shadow: 0px 1px 1px 0px var(--shadow_1);
+      color: var(--text_1);
+      background-color: var(--border_1);
+    }
+  }
+  .disabled {
+    background-color: #c4c4c4;
+    color: black;
+    user-select: none;
+    box-shadow: none;
+    cursor: default;
+    pointer-events: none;
+    &:hover {
+      transform: none;
+      box-shadow: none;
+      color: black;
+      background-color: #d4d4d4;
+    }
+  }
+
+  a {
+    margin: 10px;
+    h4 {
+      color: var(--text_1);
+      text-shadow: none;
+      font-weight: bold;
+      text-align: center;
+      &:hover {
+        color: var(--text_2);
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+
