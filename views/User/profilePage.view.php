@@ -8,7 +8,6 @@
 
 
         <div class="blockProfile infoProfile">
-
             <form action="<?= URL ?>account/modify_image_by_perso" enctype="multipart/form-data" method="post" class="formChangeAvatar">
                 <label for="image">
                     <p>Changer votre avatar <br>par une image perso</p>
@@ -16,15 +15,12 @@
                 </label><br>
                 <input type="file" id="image" name="image" onchange="submit()" value="Parcourir" class="dnone">
             </form>
-
             <form action="" method="post" class="formChangeAvatar">
                 <label>
                     <p>Changer votre avatar <br>par une image du site</p>
                     <i class="fa-solid fa-repeat" id="btn_modif_img_site"></i>
                 </label><br>
             </form>
-
-
         </div>
 
 
@@ -64,7 +60,7 @@
 
 
 
-        <?php if ( Tools::isEditor()) : ?>
+        <?php if (Tools::isEditor()) : ?>
             <div class="infoProfile">
                 <div class="modifyPasswordPage">
                     <a href="<?= URL ?>editor/write_article">
@@ -96,7 +92,6 @@
                 </a>
             </div>
         </div>
-
         <?php if (!Tools::isAdministrator()) : ?>
             <div class="infoProfile">
                 <div class="modifyPasswordPage">
@@ -118,32 +113,26 @@
                 <h4>Annulez ! Je reste !</h4>
             </div>
         </div>
-
-
-
-
-
-
     </div>
 
-   
 
 
-    <div class="images_site dnone">
-        <?php
-        $dossier = "public/assets/images/avatars/site";
-        // Liste des fichiers dans le dossier
-        $fichiers = scandir($dossier);
-        ?>
-        <?php foreach ($fichiers  as $fichier) :
-            // Vérifie si le fichier est une image
-            if (in_array(pathinfo($fichier, PATHINFO_EXTENSION), array('jpg', 'jpeg', 'png', 'gif'))) :
-        ?>
-                <div class="image_site">
-                    <a href="<?= URL ?>account/modify_avatar_by_site/<?= $fichier ?>">
-                        <img src="<?= URL ?>/public/assets/images/avatars/site/<?= $fichier ?>">
-                    </a>
-                </div>
-            <?php endif; ?>
-        <?php endforeach ?>
-    </div>
+        <form action="<?= URL ?>account/modify_avatar_by_site" method="post" class="images_site dnone">
+            <?php
+            $dossier = "public/assets/images/avatars/site";
+            // Liste des fichiers dans le dossier
+            $fichiers = scandir($dossier);
+            ?>
+            <?php foreach ($fichiers  as $fichier) :
+                // Vérifie si le fichier est une image
+                if (in_array(pathinfo($fichier, PATHINFO_EXTENSION), array('jpg', 'jpeg', 'png', 'gif'))) :
+            ?>
+                    <div class="image_site">
+                        <label>
+                            <input type="radio" name="avatar" value="<?= $fichier ?>" onclick="submit()">
+                            <img src="<?= URL ?>/public/assets/images/avatars/site/<?= $fichier ?>">
+                        </label>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach ?>
+        </form>

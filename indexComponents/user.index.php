@@ -27,7 +27,7 @@ switch ($url[1]) {
         }
         break;
     case "modify_avatar_by_site":
-        $newAvatar = Tools::secureHTML($url[2]);
+        $newAvatar = Tools::secureHTML($_POST['avatar']);
         $userController->modifyAvatarBySite($newAvatar);
         break;
 

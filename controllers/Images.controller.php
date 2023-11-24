@@ -73,6 +73,7 @@ class ImageController
         $this->deleteUserAvatar($_SESSION['profile']['login']);
         $linkAvatar = "site/" . $avatar;
         if ($this->userManager->ModifyAvatarDB($_SESSION['profile']['login'], $linkAvatar, 1)) {
+         
             $_SESSION['profile']['avatar'] = $linkAvatar;
             header('location:' . URL . "account/profile");
         } else {

@@ -10,8 +10,8 @@ define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https"  
     $_SERVER["PHP_SELF"]));
 
 
-require_once("./controllers/Images.controller.php");
-require_once("./controllers/Main.controller.php");
+// require_once("./controllers/Images.controller.php");
+// require_once("./controllers/Main.controller.php");
 require_once("./controllers/Visitor/Visitor.controller.php");
 require_once("./controllers/User/User.controller.php");
 require_once("./controllers/Editor/Editor.controller.php");
