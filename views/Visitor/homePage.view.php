@@ -4,10 +4,16 @@
     <h2>Accueil Contiendra</h2>
 
     <p>Contenu Accueil</p>
-    <!-- <?php
-        if(!empty($_SESSION['profile'])){
-        TOOLS::showArray($_SESSION);
-        }
-    ?> -->
+    
+    
+    <div class="allCards ">
+      <?php foreach ($infosArticles as $article) : ?>
+        
+         <?php require("./views/components/articleCard.php") ?>
+      <?php endforeach ?>
+
+   </div>
+
+    
 
 </div>

@@ -24,4 +24,8 @@ class MainManager extends ImagesManager
         $stmt->closeCursor();
         return $infos;
     }
+
+   
+
+   
 }

@@ -8,6 +8,7 @@
 require_once("./controllers/Images.controller.php");
 require_once("./controllers/Tools.controller.php");
 require_once("./models/Visitor/Visitor.model.php");
+require_once("./models/MainManager.model.php");
 
 
 
@@ -18,9 +19,11 @@ class MainController extends ImageController
     // genererPage, afficherTableau, ajouterMessageAlerte
     //Les injections ne se transmettent pas aux classes enfant !
     public $functions;
+    public $visitorManager;
     public function __construct()
     {
         $this->functions = new Functions();
+        $this->visitorManager = new VisitorManager();
     }
 
 
@@ -29,9 +32,15 @@ class MainController extends ImageController
 
     public function homePage()
     {
+
+        $users = $this->visitorManager->getUsers();
+        $infosArticles = $this->visitorManager->getAllInfos();
         $data_page = [
             "page_description" => "Description accueil",
             "page_title" => "titre accueil",
+            "users" => $users,
+            "infosArticles" => $infosArticles,
+            'js'=> ['home_page_animated_grid.js'],
             "view" => "views/Visitor/homePage.view.php",
             "template" => "views/templates/template.php",
 

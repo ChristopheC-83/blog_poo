@@ -1,0 +1,112 @@
+.allCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.link_card {
+  height: 200px;
+  perspective: 1000px;
+}
+
+.articleCard {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--text_2);
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 1px 1px 5px var(--text_2);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.5s;
+  color: #451d47;
+  cursor: pointer;
+
+  &:hover {
+    padding: 19px;
+    border: 2px solid var(--bg_2);
+    box-shadow: 0px 0px 10px var(--text_2), 0px 0px 5px var(--text_2) inset;
+  }
+}
+
+.apparitionCard {
+  animation: apparitionCard 0.75s -0.1s linear forwards;
+}
+
+@keyframes apparitionCard {
+  0% {
+    transform: scale(0) translateY(50px) rotateY(180deg);
+    opacity: 0;
+    display: block;
+  }
+
+  50% {
+    transform: scale(0.25) translateY(100px) rotateY(90deg);
+    opacity: 1;
+    display: block;
+  }
+  100% {
+    transform: scale(1);
+    display: block;
+  }
+}
+
+.formations_card {
+  background: linear-gradient(25deg, #fabf41 20%, #fcd279 100%);
+}
+.rocket_card {
+  background: linear-gradient(25deg, #fae25d 20%, #fff3ae 100%);
+}
+.portfolio_card {
+  background: linear-gradient(25deg, #77fc77 20%, #bbffbb 100%);
+}
+.projets_card {
+  background: linear-gradient(25deg, #57ddff 20%, #a2edff 100%);
+}
+.tricks_card {
+  background: linear-gradient(25deg, #a27aff 20%, #c9b1ff 100%);
+}
+.autres_card {
+  background: linear-gradient(25deg, #cf98ff 20%, #ebd8fc 100%);
+}
+
+@media all and (max-width: 900px) {
+  .allCards {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+  .link_card {
+    height: 180px;
+  }
+  .articleCard  {
+    padding: 10px;
+    &:hover {
+      padding: 9px;
+    }
+  }
+}
+@media all and (max-width: 520px) {
+  .container {
+    padding: 50px 0 0;
+  }
+  .allCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .link_card {
+    height: 150px;
+  }
+  .articleCard {
+    padding: 5px;
+  }
+}
+
+@media all and (max-width: 340px) {
+  .allCards {
+    grid-template-columns: 1fr;
+  }
+
+  .link_card {
+    height: 100px;
+  }
+}
