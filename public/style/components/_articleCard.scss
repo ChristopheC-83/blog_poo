@@ -53,23 +53,35 @@
   }
 }
 
+@mixin gradient-card($color-1, $color-2, $hover-percent: 10%) {
+  background: linear-gradient(25deg, $color-1 20%, $color-2 100%);
+
+  &:hover {
+    background: linear-gradient(
+      25deg,
+      darken($color-1, $hover-percent) 20%,
+      darken($color-2, $hover-percent) 100%
+    );
+  }
+}
+
 .formations_card {
-  background: linear-gradient(25deg, #fabf41 20%, #fcd279 100%);
+  @include gradient-card(#fabf41, #fcd279);
 }
 .rocket_card {
-  background: linear-gradient(25deg, #fae25d 20%, #fff3ae 100%);
+  @include gradient-card(#fae25d, #fff3ae);
 }
 .portfolio_card {
-  background: linear-gradient(25deg, #77fc77 20%, #bbffbb 100%);
+  @include gradient-card(#77fc77, #bbffbb);
 }
 .projets_card {
-  background: linear-gradient(25deg, #57ddff 20%, #a2edff 100%);
+  @include gradient-card(#57ddff, #a2edff);
 }
 .tricks_card {
-  background: linear-gradient(25deg, #a27aff 20%, #c9b1ff 100%);
+  @include gradient-card(#a27aff, #c9b1ff);
 }
 .autres_card {
-  background: linear-gradient(25deg, #cf98ff 20%, #ebd8fc 100%);
+  @include gradient-card(#cf98ff, #ebd8fc);
 }
 
 @media all and (max-width: 900px) {
@@ -79,7 +91,7 @@
   .link_card {
     height: 180px;
   }
-  .articleCard  {
+  .articleCard {
     padding: 10px;
     &:hover {
       padding: 9px;
