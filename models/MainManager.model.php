@@ -6,9 +6,18 @@
 require_once("./models/Images.model.php");
 class MainManager extends ImagesManager
 {
-    public function getThemes()
+    public function getThemes() // remplacer par topics à terme
     {
         $req = "SELECT * FROM themes ORDER BY id_theme asc";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->execute();
+        $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $infos;
+    }
+    public function getAllTopics()
+    {
+        $req = "SELECT * FROM topics ORDER BY id_topic asc";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->execute();
         $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -7,21 +7,17 @@
     <p>Contenu Accueil</p>
 
     <p>Accueil -> Tout</p>
-    <p>Projets -> codons ensemble (rpg poo, CRUD</p>
-    <p>Mise en pratique</p>
-    <p>Tricks -> ces points qui m'ont bloqué</p>
-    <p>Formations -> que j'ai suivies (rocket, Udemy, YT)</p>
-    <p>Portfolio -> mes créations</p>
-    <p>Autres -> setup, mindset</p>
+    <p>PROJETS Projets -> codons ensemble (rpg poo, CRUD...)</p>
+    <p>TESTEZ Cas pratique</p>
+    <p>TRICKS Tricks -> ces points qui m'ont bloqué</p>
+    <p>FORMATIONS -> que j'ai suivies (rocket, Udemy, YT)</p>
+    <p>PORTFOLIO -> mes créations</p>
+    <p>AUTRES -> setup, mindset</p>
     
     
     <div class="allCards ">
       <?php foreach ($infosArticles as $article) : ?>
          <?php require("./views/components/articleCard.php") ?>
       <?php endforeach ?>
-
    </div>
-
-    
-
 </div>

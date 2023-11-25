@@ -8,7 +8,7 @@ if (empty($_GET['page'])) {
 require_once("./models/Visitor/Visitor.model.php");
 $visitorController = new VisitorManager();
 $userManager = new UserManager();
-$themes = $visitorController->getThemes();
+$topics = $visitorController->getAllTopics();
 
 ?>
 
@@ -23,16 +23,15 @@ $themes = $visitorController->getThemes();
       <p>Accueil</p>
    </a>
 
-   <?php foreach ($themes as $theme) : ?>
-      <!-- Lien à changer quand mise en place du site -->
+   <?php foreach ($topics as $topic) : ?>
       <a href="
       
-      <!-- <?= URL ?>theme/<?= $theme['theme'] ?> -->
-      #
+      <!-- <?= URL ?>theme/<?= $topic['topic'] ?> -->
+      
       " class="btnTheme
-       <?= $theme['theme'] ?> 
-       <?= $url[1] === $theme['theme'] ? 'selected_theme' : '' ?>">
-         <p><?= $theme['theme'] ?></p>
+       <?= $topic['topic'] ?> 
+       <?= $url[1] === $topic['topic'] ? 'selected_theme' : '' ?>">
+         <p><?= $topic['topic'] ?></p>
       </a>
    <?php endforeach ?>
 

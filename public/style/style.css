@@ -55,38 +55,38 @@ a {
   background-color: #e75038;
 }
 
-.formations {
+.projets {
   background: #fcd279;
 }
-.formations::before {
+.projets::before {
   background-color: #fabf41;
 }
 
-.rocket {
+.pratiquons {
   background: #fff3ae;
 }
-.rocket::before {
+.pratiquons::before {
   background-color: #fae25d;
 }
 
-.portfolio {
+.tricks {
   background: #bbffbb;
 }
-.portfolio::before {
+.tricks::before {
   background-color: #77fc77;
 }
 
-.projets {
+.formations {
   background: #a2edff;
 }
-.projets::before {
+.formations::before {
   background-color: #57ddff;
 }
 
-.tricks {
+.portfolio {
   background: #c9b1ff;
 }
-.tricks::before {
+.portfolio::before {
   background-color: #a27aff;
 }
 
