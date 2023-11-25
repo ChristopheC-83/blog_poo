@@ -1,46 +1,31 @@
 <?php
 
-// issu de ImagesController car utilisé à tous les niveaux
-
-// Tous les controllers (sauf images) sont issus de MainController. Ils sont indépendants les uns des autres.
-// Les managers découlent les une des autres pour récupérer les méthodes et ne pas appeler tous les managers dans chaque controller !
-
 require_once("./controllers/Images.controller.php");
 require_once("./controllers/Tools.controller.php");
-require_once("./models/Visitor/Visitor.model.php");
-require_once("./models/MainManager.model.php");
-
+require_once("./models/Visitor/VisitorArticles.model.php");
 
 
 class MainController extends ImageController
 {
 
-    // l'injection de cette dépendance permet d'utiliser dans les controller les fonctions :
-    // genererPage, afficherTableau, ajouterMessageAlerte
-    //Les injections ne se transmettent pas aux classes enfant !
     public $functions;
-    public $visitorManager;
+    public $visitorArticlesManager;
     public function __construct()
     {
         $this->functions = new Functions();
-        $this->visitorManager = new VisitorManager();
+        $this->visitorArticlesManager = new VisitorArticlesManager();
     }
-
-
-    // homePage et errorPage sont communes à tous les utilisateurs de tous les roles (visiteurs, utilisateurs, admin...)
-    //à rappeler dans les classes enfants si besoin de personnaliser
 
     public function homePage()
     {
 
-        $users = $this->visitorManager->getUsers();
-        $infosArticles = $this->visitorManager->getAllInfos();
+        $infosArticles = $this->visitorArticlesManager->getAllInfos();
+
         $data_page = [
             "page_description" => "Description accueil",
             "page_title" => "titre accueil",
-            "users" => $users,
             "infosArticles" => $infosArticles,
-            'js'=> ['home_page_animated_grid.js'],
+            'js' => ['home_page_animated_grid.js'],
             "view" => "views/Visitor/homePage.view.php",
             "template" => "views/templates/template.php",
 

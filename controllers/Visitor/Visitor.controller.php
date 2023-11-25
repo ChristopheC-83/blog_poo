@@ -2,15 +2,18 @@
 
 require_once("./controllers/Main.controller.php");
 require_once("./models/Visitor/Visitor.model.php");
+require_once("./models/Visitor/VisitorArticles.model.php");
 
 class VisitorController extends MainController
 {
     public $visitorManager;
     public $functions;
+    public $visitorArticlesManager;
     public function __construct()
     {
         $this->functions = new Functions();
         $this->visitorManager = new VisitorManager();
+        $this->visitorArticlesManager = new VisitorArticlesManager();
     }
     public function connectionPage()
     {

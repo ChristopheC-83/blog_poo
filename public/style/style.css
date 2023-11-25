@@ -175,6 +175,22 @@ p {
     margin-top: 60px;
   }
 }
+.text-center {
+  text-align: center;
+}
+
+.d-none {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
 .overlay {
   position: fixed;
   top: 0;
