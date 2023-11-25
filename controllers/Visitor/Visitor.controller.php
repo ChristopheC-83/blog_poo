@@ -36,16 +36,47 @@ class VisitorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+
+    public function countSlider($dossier_slider)
+    {
+        $files = glob($dossier_slider . "/*");
+        $numFiles = count($files);
+        return $numFiles;
+    }
     public function postPage($id_article)
     {
-        echo $id_article;
-        // $data_page = [
-        //     "page_description" => "Page de création de compte",
-        //     "page_title" => "Page de création de compte",
-        //     "jsm" => ['loader.js'],
-        //     "view" => "views/Visitor/registrationPage.view.php",
-        //     "template" => "views/templates/template.php",
-        // ];
-        // $this->functions->generatePage($data_page);
+
+        $infosArticle = $this->visitorArticlesManager->getInfosPost($id_article);
+        $images = $this->visitorArticlesManager->getImagesById($id_article);
+        $textes = $this->visitorArticlesManager->getTextesById($id_article);
+        $themes = $this->visitorArticlesManager->getAllTopics();
+        $meta = $infosArticle['titre'];
+        $templateArticle = $infosArticle['templateArticle'];
+        $slider = $this->visitorArticlesManager->getSlider($id_article);
+        $video = $this->visitorArticlesManager->getVideo($id_article);
+        $numFiles = 0;
+        $dossier_slider = "";
+        if ($slider && isset($slider['dossier'])) {
+            $dossier_slider = sliderPath . $slider['dossier'];
+            $numFiles = $this->countSlider($dossier_slider);
+        }
+
+        $data_page = [
+            "meta_description" => "Partage d'expérience : $meta ",
+            "page_title" => "repaire d'un dev !",
+            "view" => "views/templates/template_post.view.php",
+            "template" => "views/templates/template.php",
+            // "js" => ['administration.js'],
+            "themes" => $themes,
+            "infosArticle" => $infosArticle,
+            "images" => $images,
+            "textes" => $textes,
+            "slider" => $slider,
+            "video" => $video,
+            "numFiles" => $numFiles,
+            "dossier_slider" => $dossier_slider,
+            "templateArticle" => $templateArticle,
+        ];
+        $this->functions->generatePage($data_page);
     }
 }

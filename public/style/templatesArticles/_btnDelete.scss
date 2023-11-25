@@ -1,0 +1,16 @@
+.btnDelete {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-color: red;
+    color: white;
+    border: 3px solid black;
+    border-radius: 50%;
+    font-size: 25px;
+    font-weight: bold;
+    @include flexMid;
+    z-index: 10;
+    cursor: pointer;
+  }

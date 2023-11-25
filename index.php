@@ -10,6 +10,10 @@ define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https"  
     $_SERVER["PHP_SELF"]));
 
 
+define("sliderPath", "C:/xampp/htdocs/kiki/barpat_blog_poo/public/assets/sliders/");
+define("imgFolder", URL . "public/assets/images/posts/");
+define("slidersFolder", URL . "public/assets/sliders/");
+
 // require_once("./controllers/Images.controller.php");
 // require_once("./controllers/Main.controller.php");
 require_once("./models/MainManager.model.php");
@@ -117,20 +121,16 @@ try {
         case "article":
             $id_article = Tools::secureHTML($url[2]);
             $url = Tools::secureHTML($url[3]);
-            echo $url . $id_article;
-            Tools::showArray($visitorArticlesManager->getInfosPost($id_article));
-            $id = $visitorArticlesManager->getInfosPost($id_article)['id_article'];
-            echo ('id '.$id);
-            // if (!isset($VisitorArticlesManager->getInfosArticle($id_article)['id_article'])) {
-            //     $visitorController->errorPage("Cet article n'existe pas encore ? <br> Tu es un visiteur du futur ?");
-            // } else {
+            if (!isset($visitorArticlesManager->getInfosPost($id_article)['id_article'])) {
+                $visitorController->errorPage("Cet article n'existe pas encore ? <br> Tu es un visiteur du futur ?");
+            } else {
 
-            //     if ($url !== $VisitorArticlesManager->getInfosArticle($id_article)['url']) {
-            //         $visitorController->errorPage("Il y a un soucis dans ton url <br> On recommence de l'accueil ?");
-            //     } else {
-            //         $visitorController->postPage($id_article);
-            //     }
-            // }
+                if ($url !== $visitorArticlesManager->getInfosPost($id_article)['url']) {
+                    $visitorController->errorPage("Il y a un soucis dans ton url <br> On recommence de l'accueil ?");
+                } else {
+                    $visitorController->postPage($id_article);
+                }
+            }
             break;
             // ################################# User
         case "account":
