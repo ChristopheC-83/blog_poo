@@ -65,22 +65,22 @@
   }
 }
 
-.formations_card {
+.projets_card {
   @include gradient-card(#fabf41, #fcd279);
 }
-.rocket_card {
+.notions_card {
   @include gradient-card(#fae25d, #fff3ae);
 }
-.portfolio_card {
+.tricks_card {
   @include gradient-card(#77fc77, #bbffbb);
 }
-.projets_card {
+.portfolio_card {
   @include gradient-card(#57ddff, #a2edff);
 }
-.tricks_card {
+.autres_card {
   @include gradient-card(#a27aff, #c9b1ff);
 }
-.autres_card {
+.formations_card {
   @include gradient-card(#cf98ff, #ebd8fc);
 }
 

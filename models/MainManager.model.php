@@ -34,7 +34,7 @@ class MainManager extends ImagesManager
         return $infos;
     }
 
-   
+    
 
-   
+ 
 }

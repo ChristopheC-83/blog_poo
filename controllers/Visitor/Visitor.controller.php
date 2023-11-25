@@ -36,4 +36,16 @@ class VisitorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+    public function postPage($id_article)
+    {
+        echo $id_article;
+        // $data_page = [
+        //     "page_description" => "Page de création de compte",
+        //     "page_title" => "Page de création de compte",
+        //     "jsm" => ['loader.js'],
+        //     "view" => "views/Visitor/registrationPage.view.php",
+        //     "template" => "views/templates/template.php",
+        // ];
+        // $this->functions->generatePage($data_page);
+    }
 }

@@ -19,7 +19,7 @@ class MainController extends ImageController
     public function homePage()
     {
 
-        $infosArticles = $this->visitorArticlesManager->getAllInfos();
+        $infosArticles = $this->visitorArticlesManager->getInfosAllPosts();
 
         $data_page = [
             "page_description" => "Description accueil",

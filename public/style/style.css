@@ -62,10 +62,10 @@ a {
   background-color: #fabf41;
 }
 
-.pratiquons {
+.notions {
   background: #fff3ae;
 }
-.pratiquons::before {
+.notions::before {
   background-color: #fae25d;
 }
 
@@ -76,24 +76,24 @@ a {
   background-color: #77fc77;
 }
 
-.formations {
+.portfolio {
   background: #a2edff;
 }
-.formations::before {
+.portfolio::before {
   background-color: #57ddff;
 }
 
-.portfolio {
+.autres {
   background: #c9b1ff;
 }
-.portfolio::before {
+.autres::before {
   background-color: #a27aff;
 }
 
-.autres {
+.formations {
   background: #ebd8fc;
 }
-.autres::before {
+.formations::before {
   background-color: #cf98ff;
 }
 
@@ -1042,45 +1042,45 @@ tr {
     display: block;
   }
 }
-.formations_card {
+.projets_card {
   background: linear-gradient(25deg, #fabf41 20%, #fcd279 100%);
 }
-.formations_card:hover {
+.projets_card:hover {
   background: linear-gradient(25deg, #f9ae0f 20%, #fbc147 100%);
 }
 
-.rocket_card {
+.notions_card {
   background: linear-gradient(25deg, #fae25d 20%, #fff3ae 100%);
 }
-.rocket_card:hover {
+.notions_card:hover {
   background: linear-gradient(25deg, #f8d92c 20%, #ffeb7b 100%);
 }
 
-.portfolio_card {
+.tricks_card {
   background: linear-gradient(25deg, #77fc77 20%, #bbffbb 100%);
 }
-.portfolio_card:hover {
+.tricks_card:hover {
   background: linear-gradient(25deg, #45fb45 20%, #88ff88 100%);
 }
 
-.projets_card {
+.portfolio_card {
   background: linear-gradient(25deg, #57ddff 20%, #a2edff 100%);
 }
-.projets_card:hover {
+.portfolio_card:hover {
   background: linear-gradient(25deg, #24d3ff 20%, #6fe3ff 100%);
 }
 
-.tricks_card {
+.autres_card {
   background: linear-gradient(25deg, #a27aff 20%, #c9b1ff 100%);
 }
-.tricks_card:hover {
+.autres_card:hover {
   background: linear-gradient(25deg, #7e47ff 20%, #a67eff 100%);
 }
 
-.autres_card {
+.formations_card {
   background: linear-gradient(25deg, #cf98ff 20%, #ebd8fc 100%);
 }
-.autres_card:hover {
+.formations_card:hover {
   background: linear-gradient(25deg, #b765ff 20%, #d3a9f8 100%);
 }
 

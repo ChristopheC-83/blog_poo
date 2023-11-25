@@ -12,10 +12,14 @@ define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https"  
 
 // require_once("./controllers/Images.controller.php");
 // require_once("./controllers/Main.controller.php");
+require_once("./models/MainManager.model.php");
+require_once("./models/Visitor/VisitorArticles.model.php");
 require_once("./controllers/Visitor/Visitor.controller.php");
 require_once("./controllers/User/User.controller.php");
 require_once("./controllers/Editor/Editor.controller.php");
 require_once("./controllers/Admin/Administrator.controller.php");
+$mainManager = new MainManager();
+$visitorArticlesManager = new VisitorArticlesManager();
 $visitorController = new VisitorController();
 $userController = new UserController();
 $editorController = new EditorController();
@@ -108,6 +112,26 @@ try {
                 header('Location: ' . URL . 'connection');
             }
             break;
+
+
+        case "article":
+            $id_article = Tools::secureHTML($url[2]);
+            $url = Tools::secureHTML($url[3]);
+            echo $url . $id_article;
+            Tools::showArray($visitorArticlesManager->getInfosPost($id_article));
+            $id = $visitorArticlesManager->getInfosPost($id_article)['id_article'];
+            echo ('id '.$id);
+            // if (!isset($VisitorArticlesManager->getInfosArticle($id_article)['id_article'])) {
+            //     $visitorController->errorPage("Cet article n'existe pas encore ? <br> Tu es un visiteur du futur ?");
+            // } else {
+
+            //     if ($url !== $VisitorArticlesManager->getInfosArticle($id_article)['url']) {
+            //         $visitorController->errorPage("Il y a un soucis dans ton url <br> On recommence de l'accueil ?");
+            //     } else {
+            //         $visitorController->postPage($id_article);
+            //     }
+            // }
+            break;
             // ################################# User
         case "account":
             if (!Tools::isConnected()) {
@@ -127,11 +151,9 @@ try {
             } elseif (!Tools::isEditor()) {
                 Tools::alertMessage("Vous n'avez pas le statut requis.", "red");
                 header('Location: ' . URL . 'home');
-            } 
-            elseif (!Tools::checkCookieConnection()) {
+            } elseif (!Tools::checkCookieConnection()) {
                 Tools::badCookie();
-            } 
-            else {
+            } else {
                 require_once("./indexComponents/editor.index.php");
             }
             break;
