@@ -1,7 +1,8 @@
 <div class="overlay dnone">
 
-  <div class="gearbox dnone">
-  <div class="overlay_gearbox"></div>
+
+
+<div class="gearbox dnone">
     <div class="gear one">
       <div class="gear-inner">
         <div class="bar"></div>
@@ -34,6 +35,8 @@
       </div>
     </div>
   </div>
+
+
 
 
 </div>

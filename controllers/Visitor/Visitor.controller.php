@@ -24,6 +24,7 @@ class VisitorController extends MainController
         $data_page = [
             "page_description" => "Page de connexion",
             "page_title" => "Page de connexion",
+            "jsm" => ['loader.js'],
             "view" => "views/Visitor/connectionPage.view.php",
             "template" => "views/templates/template.php",
         ];

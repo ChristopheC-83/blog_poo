@@ -31,7 +31,7 @@ class UserController extends MainController
                 header('Location: ' . URL . 'account/profile');
             } else {
                 Tools::alertMessage("Compte en attente validation", "orange");
-                $msg = "<a href='resend_validation_mail/" . $login . "'>=> Renvoyer le mail de validation <=</a> ";
+                $msg = "<a id='resendMailValidation' href='resend_validation_mail/" . $login . "'>=> Renvoyer le mail de validation <=</a> ";
                 Tools::alertMessage($msg, "orange");
                 header('Location: ' . URL . 'connection');
             }

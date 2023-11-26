@@ -25,7 +25,6 @@ class AdminstratorController extends MainController
     public function rightsManagement()
     {
         $infoUsers = $this->administratorManager->getUsers();
-
         $data_page = [
             "page_description" => "Page de gestion des droits",
             "page_title" => "Page de gestion des droits",
