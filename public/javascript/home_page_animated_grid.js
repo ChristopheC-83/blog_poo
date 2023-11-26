@@ -32,10 +32,11 @@ card3D.forEach((cards) => {
 const currentUrl = window.location.href;
 const delay = 50;
 
+
 const isHomepage = "http://localhost:8090/kiki/barpat_blog_poo";
-const isHomepage2 = "http://localhost:8090/kiki/barpat_blog_poo/";
-const isAccueil = "http://localhost:8090/kiki/barpat_blog_poo/home";
-const isAccueil2 = "http://localhost:8090/kiki/barpat_blog_poo/home/";
+const isHomepage2 = isHomepage+"/";
+const isAccueil = isHomepage+"/home";
+const isAccueil2 = isHomepage+"/home/";
 
 window.addEventListener("DOMContentLoaded", (event) => {
   card3D.forEach((card) => {
@@ -45,7 +46,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       currentUrl === isAccueil ||
       currentUrl === isAccueil2
     ) {
-      // card.classList.add("dnone");
       card.classList.remove("dnone");
       card.classList.add("apparitionCard");
     } else {

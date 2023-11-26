@@ -93,7 +93,7 @@ class VisitorController extends MainController
             "page_title" => "repaire d'un dev !",
             "view" => "views/Visitor/topicPage.view.php",
             "template" => "views/templates/template.php",
-            "js" => ['animation_grille.js'],
+            "js" => ['home_page_animated_grid.js'],
             "topicPage" => $topicPage,
             "postsFromTopic" => $postsFromTopic,
         ];
