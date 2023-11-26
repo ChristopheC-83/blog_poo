@@ -62,10 +62,10 @@ try {
         case "home":
             $visitorController->homePage();
             break;
-        case "theme":
-            $themeChoisi = $secure->secureHTML($url[1]);
-            echo "tu as choisi le thème : " . $url[1];
-            break;
+        case "topic":
+            $chosenTopic = Tools::secureHTML($url[1]);
+            $visitorController->topicPage($chosenTopic);
+            break;            
         case "connection":
             $visitorController->connectionPage();
             break;

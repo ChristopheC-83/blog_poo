@@ -24,7 +24,7 @@ $topics = $visitorController->getAllTopics();
    </a>
 
    <?php foreach ($topics as $topic) : ?>
-      <a href="<?= URL ?>theme/<?= $topic['topic'] ?>" class="btnTheme
+      <a href="<?= URL ?>topic/<?= $topic['topic'] ?>" class="btnTheme
        <?= $topic['topic'] ?> 
        <?= $url[1] === $topic['topic'] ? 'selected_theme' : '' ?>">
          <p><?= $topic['topic'] ?></p>

@@ -29,14 +29,27 @@ card3D.forEach((cards) => {
 // ############################
 // animation cartes seulement accueil
 
+const currentUrl = window.location.href;
 const delay = 50;
 
+const isHomepage = "http://localhost:8090/kiki/barpat_blog_poo";
+const isHomepage2 = "http://localhost:8090/kiki/barpat_blog_poo/";
+const isAccueil = "http://localhost:8090/kiki/barpat_blog_poo/home";
+const isAccueil2 = "http://localhost:8090/kiki/barpat_blog_poo/home/";
 
 window.addEventListener("DOMContentLoaded", (event) => {
   card3D.forEach((card) => {
-    
+    if (
+      currentUrl === isHomepage ||
+      currentUrl === isHomepage2 ||
+      currentUrl === isAccueil ||
+      currentUrl === isAccueil2
+    ) {
+      // card.classList.add("dnone");
       card.classList.remove("dnone");
       card.classList.add("apparitionCard");
-    
+    } else {
+      card.classList.remove("dnone");
+    }
   });
 });

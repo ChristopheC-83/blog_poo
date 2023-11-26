@@ -79,4 +79,24 @@ class VisitorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+
+    public function topicPage($topic)
+    {
+        $topicPage = $this->visitorArticlesManager->chosenTopic($topic);
+        $postsFromTopic =$this->visitorArticlesManager-> postsFromTopic($topic);
+
+        // Tools::showArray($topicPage);
+        // Tools::showArray($postsFromTopic);
+
+        $data_page = [
+            "meta_description" => "Partage d'expérience : ... ",
+            "page_title" => "repaire d'un dev !",
+            "view" => "views/Visitor/topicPage.view.php",
+            "template" => "views/templates/template.php",
+            "js" => ['animation_grille.js'],
+            "topicPage" => $topicPage,
+            "postsFromTopic" => $postsFromTopic,
+        ];
+        $this->functions->generatePage($data_page);
+    }
 }

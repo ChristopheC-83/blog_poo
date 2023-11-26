@@ -24,5 +24,25 @@ class VisitorArticlesManager extends MainManager
         $stmt->closeCursor();
         return $infos;
     }
+    public function chosenTopic($topic)
+    {
+        $req = "SELECT * FROM topics WHERE topic = :topic";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindValue(':topic', $topic, PDO::PARAM_STR);
+        $stmt->execute();
+        $infos = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $infos;
+    }
+    public function postsFromTopic($topic)
+    {
+        $req = "SELECT * FROM posts WHERE topic = :topic";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindValue(':topic', $topic, PDO::PARAM_STR);
+        $stmt->execute();
+        $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $infos;
+    }
    
 }
