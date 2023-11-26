@@ -58,5 +58,3 @@ $textes
 
 
 </article>
-
-<script src="<?= URL ?>public/javascript/slider.js"></script>
