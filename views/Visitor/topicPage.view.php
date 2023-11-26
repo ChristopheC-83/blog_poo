@@ -1,11 +1,12 @@
-<div class=" container accueil ">
+<div class="container ">
 
    <div class="intro">
       <h1><?= isset($topicPage['topic']) ? $topicPage['topic'] : "" ?></h1>
-      <h3><?= isset($topicPage['description_theme']) ? $topicPage['description_theme'] : "" ?></h3>
+      <h3 class="text-center"><?= isset($topicPage['description_theme']) ? $topicPage['description_theme'] : "" ?></h3>
+      <br><br>
    </div>
 
-   <div class="container allCards">
+   <div class="allCards">
       <?php if (!empty($postsFromTopic)) : ?>
          <?php foreach ($postsFromTopic as $article) : ?>
             <?php require("./views/components/articleCard.php") ?>
