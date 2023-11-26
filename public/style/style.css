@@ -191,6 +191,10 @@ p {
   flex-direction: column;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .overlay {
   position: fixed;
   top: 0;

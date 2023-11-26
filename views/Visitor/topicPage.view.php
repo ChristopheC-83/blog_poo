@@ -1,7 +1,7 @@
 <div class="container ">
 
    <div class="intro">
-      <h1><?= isset($topicPage['topic']) ? $topicPage['topic'] : "" ?></h1>
+      <h1 class="uppercase"><?= isset($topicPage['topic']) ? $topicPage['topic'] : "" ?></h1>
       <h3 class="text-center"><?= isset($topicPage['description_theme']) ? $topicPage['description_theme'] : "" ?></h3>
       <br><br>
    </div>
