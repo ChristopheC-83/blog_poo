@@ -1,10 +1,12 @@
 <?php
 
 // fichier avec des fonctions récurrentes
-// importé par injection de dépendances dzans chaque classe controller
+// importé par injection de dépendances dans chaque classe controller
 
 class Functions
 {
+    // cette fonction permet de récupérer les données sous forme d'un tableau dans les controllers 
+    // pour en faire une pasge accessible à l'utilisateur .
     public function generatePage($data)
     {
         extract($data);

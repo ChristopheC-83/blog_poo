@@ -5,6 +5,7 @@ require_once("./models/MainManager.model.php");
 
 class UserManager extends MainManager
 {
+    // utilisé pour valider connexion
     public function getPasswordUser($login)
     {
         $req = "SELECT password FROM users WHERE login = :login";
@@ -15,6 +16,7 @@ class UserManager extends MainManager
         $stmt->closeCursor();
         return $resultat['password'];
     }
+    // utilisé pour valider concordance login/password pour envoyer mail si mot de passe oublié
     public function getMailUser($login)
     {
         $req = "SELECT mail FROM users WHERE login = :login";
@@ -26,11 +28,13 @@ class UserManager extends MainManager
         return $resultat['mail'];
     }
 
+    // vérifie concordance login/mdp pour connexion
     public function isCombinationValid($login, $password)
     {
         $passwordDB = $this->getPasswordUser($login);
         return password_verify($password, $passwordDB);
     }
+    // compte validé par lien mail si option activé ?
     public function isAccountValidated($login)
     {
         $req = "SELECT is_valid FROM users WHERE login = :login";
@@ -41,6 +45,7 @@ class UserManager extends MainManager
         $stmt->closeCursor();
         return ((int)$resultat['is_valid'] === 1 ? true : false);
     }
+    //  récupère les infos de l'utilisateur pour page de profil par exemple
     public function getUserInfo($login)
     {
         $req = "SELECT * FROM users WHERE login = :login";
@@ -51,14 +56,17 @@ class UserManager extends MainManager
         $stmt->closeCursor();
         return $resultat;
     }
+    // vérifie si login dispo à la création d'un compte
     public function isLoginFree($login)
     {
         return (empty($this->getUserInfo($login)));
     }
+    // enregistre le compte en bdd
+    // mettre 1 à is_valid si on veut un compte validé à sa création
     public function registerAccountDB($login, $password, $mail, $account_key, $avatar)
     {
         $req = "INSERT INTO users (login, password, mail, is_valid, role, account_key, avatar, avatar_site)
-        VALUES(:login, :password, :mail, 0, 'user', :account_key, :avatar, 1)
+        VALUES(:login, :password, :mail, 0, 'user', :account_key, :avatar, 1)   
         ";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
@@ -71,6 +79,7 @@ class UserManager extends MainManager
         $stmt->closeCursor();
         return $isCreate;
     }
+    // validation compte après clic sur lien envoyé par mail
     public function validationAccountDB($login, $account_key)
     {
         $req = "UPDATE users set is_valid = 1 WHERE login= :login and account_key= :account_key ";
@@ -82,6 +91,7 @@ class UserManager extends MainManager
         $stmt->closeCursor();
         return $isValidate;
     }
+    //  modifie mail en bdd
     public function modifyMailDB($login, $mail)
     {
         $req = "UPDATE users set mail = :mail WHERE login= :login";
@@ -93,6 +103,7 @@ class UserManager extends MainManager
         $stmt->closeCursor();
         return $isValidate;
     }
+    // modifie mdp en bdd
     public function modifyPasswordDB($login, $password)
     {
         $req = "UPDATE users set password = :password WHERE login= :login";
@@ -104,7 +115,7 @@ class UserManager extends MainManager
         $stmt->closeCursor();
         return $isValidate;
     }
-
+    // supprime le compte de la bdd
     public function deleteAccountDB($login)
     {
         $req = "DELETE FROM users WHERE login= :login";

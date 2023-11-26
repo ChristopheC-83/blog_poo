@@ -63,9 +63,9 @@
         <?php if (Tools::isEditor()) : ?>
             <div class="infoProfile">
                 <div class="modifyPasswordPage">
-                    <a href="<?= URL ?>editor/write_article">
+                    <a href="<?= URL ?>editor/write_post">
                         <div class="btnModifyPasswordPage">
-                            <p>J'écris un article.</p>
+                            <p>J'écris un nouvel article.</p>
                         </div>
                     </a>
                 </div>

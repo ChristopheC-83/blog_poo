@@ -1,8 +1,9 @@
 <?php
 
+// Classe des possibilités pour un utilisateur connecté
+
 require_once("./controllers/Main.controller.php");
 require_once("./models/User/User.model.php");
-
 
 
 
@@ -15,6 +16,7 @@ class UserController extends MainController
         $this->functions = new Functions();
         $this->userManager = new UserManager();
     }
+    // validation connection
     public function validation_login($login, $password)
     {
         $datasUser = $this->userManager->getUserInfo($login);
@@ -27,7 +29,6 @@ class UserController extends MainController
                 $_SESSION['profile']['avatar'] =  $datasUser['avatar'];
                 Tools::generateCookieConnection();
                 header('Location: ' . URL . 'account/profile');
-                // header('Location: ' . URL . 'account/profile');
             } else {
                 Tools::alertMessage("Compte en attente validation", "orange");
                 $msg = "<a href='resend_validation_mail/" . $login . "'>=> Renvoyer le mail de validation <=</a> ";
@@ -39,6 +40,7 @@ class UserController extends MainController
             header('Location: ' . URL . 'connection');
         }
     }
+    // affichage page de profile
     public function profilePage()
     {
         $datasUser = $this->userManager->getUserInfo($_SESSION['profile']['login']);
@@ -54,6 +56,7 @@ class UserController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+    // déconnexion de l'utilisateur + desctruction cookie
     public function logout()
     {
         unset($_SESSION['profile']);
@@ -66,6 +69,7 @@ class UserController extends MainController
         }
         header('Location: ' . URL . 'home');
     }
+    // envoi mail validation compte
     private function sendMailValidation($login, $mail, $account_key)
     {
         $urlValidation = URL . "mail_validation_account/" . $login . "/" . $account_key;
@@ -73,6 +77,7 @@ class UserController extends MainController
         $message = "Validez votre compte sur le blog de Barpat ! Nous t'attendons ! Cliquez sur :" . $urlValidation;
         Tools::sendMail($mail, $sujet, $message);
     }
+    // renvoi mail validation compte
     public function resendValidationMail($login)
     {
 
@@ -81,6 +86,7 @@ class UserController extends MainController
         Tools::alertMessage("Mail de validation renvoyé !", "green");
         header('Location: ' . URL . 'connection');
     }
+    // création nouveau compte
     private function registerAccount($login, $password, $mail, $account_key)
     {
         $avatar = "site/astroshiba.jpg";
@@ -93,6 +99,7 @@ class UserController extends MainController
             header('Location: ' . URL . 'registration');
         }
     }
+    // validation création compte
     public function validationRegistration($login, $password, $mail)
     {
         if ($this->userManager->isLoginFree($login)) {
@@ -104,11 +111,13 @@ class UserController extends MainController
             header('Location: ' . URL . 'registration');
         }
     }
+    // compte déjà activé !?!
     private function accountAlreadyActivated($login)
     {
         $datasUser = $this->userManager->getUserInfo($login);
         return ((int)$datasUser['is_valid'] === 1);
     }
+    // réponse au clic sur lien de validation envoyé par mail
     public function validationAccountByLinkMail($login, $account_key)
     {
         if ($this->accountAlreadyActivated($login)) {
@@ -126,6 +135,7 @@ class UserController extends MainController
             }
         }
     }
+    // modification mail
     public function modifyMail($newMail)
     {
         if ($this->userManager->modifyMailDB($_SESSION['profile']['login'], $newMail)) {
@@ -135,6 +145,7 @@ class UserController extends MainController
         }
         header('Location: ' . URL . 'account/profile');
     }
+    // page modification password
     public function modifyPasswordPage()
     {
         $datasUser = $this->userManager->getUserInfo($_SESSION['profile']['login']);
@@ -149,6 +160,7 @@ class UserController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+    // validation modification password
     public function validationNewPassword($old_password, $new_password)
     {
         if ($this->userManager->isCombinationValid($_SESSION['profile']['login'], $old_password)) {
@@ -165,6 +177,8 @@ class UserController extends MainController
             header('Location: ' . URL . 'account/modify_password');
         }
     }
+    // envoi nouveau password si oubblié
+
     public function sendNewPassword($old_password, $new_password, $verif_password)
     {
         if ($old_password === $new_password) {
@@ -177,19 +191,7 @@ class UserController extends MainController
             $this->validationNewPassword($old_password, $new_password);
         }
     }
-    public function deleteAccount()
-    {
-        $login = $_SESSION['profile']['login'];
-        $this->deleteUserAvatar($login);
-        rmdir("public/assets/images/avatars/users/" . $login);
-        if ($this->userManager->deleteAccountDB($login)) {
-            $this->logout();
-            Tools::alertMessage("Suppression du compte effectuée. ", "green");
-        } else {
-            Tools::alertMessage("La suppression du compte a échoué. ", "red");
-            header('Location: ' . URL . 'account/profile');
-        }
-    }
+    // page mot de passe oublié
     public function forgotPasswordPage()
     {
 
@@ -203,6 +205,7 @@ class UserController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+    //  validation mail/login avant envoi nouveau mot de passe dans mot de passe oublié
     public function  isCombinationMailValid($login, $mail)
     {
         $maildBd = $this->userManager->getMailUser($login);
@@ -212,6 +215,7 @@ class UserController extends MainController
             return false;
         }
     }
+    // préparation envoi nouveau mot de passe dans mot de passe oublié
     public function sendNewPasswordAfterForgot($login, $newMdp)
     {
         $mdpCrypte = password_hash($newMdp, PASSWORD_DEFAULT);
@@ -221,6 +225,7 @@ class UserController extends MainController
             Tools::alertMessage("Echec de la mise en place du nouveau mot de passe", "red");
         }
     }
+    // envoi mail avec nouveau mot de passe dans mot de passe oublié
     public function sendForgotPassword($login, $mail)
     {
 
@@ -238,6 +243,20 @@ class UserController extends MainController
             Tools::alertMessage("Nouveau mdp envoyé par mail", "green");
             Tools::sendMail($destinataire, $sujet, $message,);
             header('location:' . URL . "connection");
+        }
+    }
+    //  suppression irréversible du compte
+    public function deleteAccount()
+    {
+        $login = $_SESSION['profile']['login'];
+        $this->deleteUserAvatar($login);
+        rmdir("public/assets/images/avatars/users/" . $login);
+        if ($this->userManager->deleteAccountDB($login)) {
+            $this->logout();
+            Tools::alertMessage("Suppression du compte effectuée. ", "green");
+        } else {
+            Tools::alertMessage("La suppression du compte a échoué. ", "red");
+            header('Location: ' . URL . 'account/profile');
         }
     }
 }

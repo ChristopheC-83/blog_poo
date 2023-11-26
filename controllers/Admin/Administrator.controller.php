@@ -1,10 +1,12 @@
 <?php
 
+// Classe des possibilités pour un utilisateur connecté en tant qu'administrateur
+
 require_once("./controllers/Functions.controller.php");
 require_once("./models/Admin/Administrator.model.php");
-require_once("./models/User/User.model.php");
 require_once("./controllers/Main.controller.php");
-require_once("./controllers/Images.controller.php");
+require_once("./models/User/User.model.php");
+// require_once("./controllers/Images.controller.php");
 
 class AdminstratorController extends MainController
 {
@@ -16,9 +18,10 @@ class AdminstratorController extends MainController
     {
         $this->functions = new Functions();
         $this->administratorManager = new AdministratorManager();
+        //  appel à userManager nécessaire pour utiilser une méthode pour la suppression d'un compte
         $this->userManager = new UserManager();
-        // $this->imageController = new ImageController();
     }
+    // page des utilisateurs et paramétrage
     public function rightsManagement()
     {
         $infoUsers = $this->administratorManager->getUsers();
@@ -33,6 +36,7 @@ class AdminstratorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+    //  modifier le role d'un utilisateur inscrit
     public function modifyRole($login, $newRole)
     {
         if ($this->administratorManager->modifyRoleDB($login, $newRole)) {
@@ -42,6 +46,7 @@ class AdminstratorController extends MainController
         }
         header('Location: ' . URL . 'administrator/rights_management');
     }
+    //  modifier le statut d'un utlistauer inscrit (valider son compte)
     public function modifyState($login, $is_valid)
     {
         if ($this->administratorManager->modifyStateDB($login, $is_valid)) {
@@ -51,6 +56,7 @@ class AdminstratorController extends MainController
         }
         header('Location: ' . URL . 'administrator/rights_management');
     }
+    // supprimer le dossier image d'un utilisateur si suppression de son compte
     private function deleteDirectory($dir)
     {
         if (!is_dir($dir)) {
@@ -67,6 +73,7 @@ class AdminstratorController extends MainController
         }
         return rmdir($dir); // Suppression du répertoire principal
     }
+    //  suppression compte utilisateur
     public function deleteAccountUser($login)
     {
         // $this->deleteDirectory("public/assets/images/avatars/users/" . $login);

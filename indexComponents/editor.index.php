@@ -1,8 +1,15 @@
 <?php 
 
 switch ($url[1]) {
-    case "write_article":
-        $editorController->writeArticle();
+    // Page d'écriture d'un article
+    case "write_post":
+        $editorController->writePost();
+        break;
+    case "modify_post":
+        $editorController->modifyPost();
+        break;
+    case "delete_post":
+        $editorController->deletePost();
         break;
 
     default:

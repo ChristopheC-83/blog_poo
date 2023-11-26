@@ -1,5 +1,8 @@
 <?php
 
+//  cette classe permet l'affichage des 2 pages de base
+//  accueil et erreur
+
 require_once("./controllers/Images.controller.php");
 require_once("./controllers/Tools.controller.php");
 require_once("./models/Visitor/VisitorArticles.model.php");
@@ -18,7 +21,7 @@ class MainController extends ImageController
 
     public function homePage()
     {
-
+        // affiche tous les articles
         $infosArticles = $this->visitorArticlesManager->getInfosAllPosts();
 
         $data_page = [

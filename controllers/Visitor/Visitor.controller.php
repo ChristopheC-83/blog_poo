@@ -1,5 +1,7 @@
 <?php
 
+// Classe des pages/fonctions propres à l'utilisateur connecté (ou en cours de connection/inscription) 
+
 require_once("./controllers/Main.controller.php");
 require_once("./models/Visitor/Visitor.model.php");
 require_once("./models/Visitor/VisitorArticles.model.php");
@@ -15,6 +17,8 @@ class VisitorController extends MainController
         $this->visitorManager = new VisitorManager();
         $this->visitorArticlesManager = new VisitorArticlesManager();
     }
+
+    // connexion
     public function connectionPage()
     {
         $data_page = [
@@ -25,6 +29,7 @@ class VisitorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+    // création compte
     public function registrationPage()
     {
         $data_page = [
@@ -37,15 +42,16 @@ class VisitorController extends MainController
         $this->functions->generatePage($data_page);
     }
 
+    // récupère les slide pour un slider dans un article
     public function countSlider($dossier_slider)
     {
         $files = glob($dossier_slider . "/*");
         $numFiles = count($files);
         return $numFiles;
     }
+    // creation d'un page avec un post
     public function postPage($id_article)
     {
-
         $infosArticle = $this->visitorArticlesManager->getInfosPost($id_article);
         $images = $this->visitorArticlesManager->getImagesById($id_article);
         $textes = $this->visitorArticlesManager->getTextesById($id_article);
@@ -60,13 +66,11 @@ class VisitorController extends MainController
             $dossier_slider = sliderPath . $slider['dossier'];
             $numFiles = $this->countSlider($dossier_slider);
         }
-
         $data_page = [
             "meta_description" => "Partage d'expérience : $meta ",
             "page_title" => "repaire d'un dev !",
             "view" => "views/templates/template_post.view.php",
             "template" => "views/templates/template.php",
-            // "js" => ['administration.js'],
             "themes" => $themes,
             "infosArticle" => $infosArticle,
             "images" => $images,
@@ -79,14 +83,11 @@ class VisitorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
-
+    //  page avec les post pour un topic choisi
     public function topicPage($topic)
     {
         $topicPage = $this->visitorArticlesManager->chosenTopic($topic);
-        $postsFromTopic =$this->visitorArticlesManager-> postsFromTopic($topic);
-
-        // Tools::showArray($topicPage);
-        // Tools::showArray($postsFromTopic);
+        $postsFromTopic = $this->visitorArticlesManager->postsFromTopic($topic);
 
         $data_page = [
             "meta_description" => "Partage d'expérience : ... ",

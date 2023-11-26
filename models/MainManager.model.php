@@ -1,4 +1,5 @@
 <?php
+
 // les modelsManager permettent la récupéretion, le traitement des données
 // ils gèrent aussi la partie logique du site.
 // Il est issu de ImagesManager (issu de Model), car ImagesManager utiles partout !
@@ -6,15 +7,7 @@
 require_once("./models/Images.model.php");
 class MainManager extends ImagesManager
 {
-    public function getThemes() // remplacer par topics à terme
-    {
-        $req = "SELECT * FROM themes ORDER BY id_theme asc";
-        $stmt = $this->getBDD()->prepare($req);
-        $stmt->execute();
-        $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $infos;
-    }
+    // récupérer les themes pour faire par exemple les boutons de la barre de menu
     public function getAllTopics()
     {
         $req = "SELECT * FROM topics ORDER BY id_topic asc";
@@ -24,15 +17,7 @@ class MainManager extends ImagesManager
         $stmt->closeCursor();
         return $infos;
     }
-    // public function getUsers()
-    // {
-    //     $req = "SELECT * FROM users ";
-    //     $stmt = $this->getBDD()->prepare($req);
-    //     $stmt->execute();
-    //     $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //     $stmt->closeCursor();
-    //     return $infos;
-    // }
+    // récupère les images des articles
     public function getImagesById($id_article)
     {
         $req = "SELECT * FROM images 
@@ -45,7 +30,8 @@ class MainManager extends ImagesManager
         $stmt->closeCursor();
         return $infos;
     }
-    function getTextesById($id_article)
+    // récupère les textes des articles
+    public function getTextesById($id_article)
     {
         $req = "SELECT * FROM textes 
         WHERE id_article = :id_article
@@ -57,6 +43,7 @@ class MainManager extends ImagesManager
         $stmt->closeCursor();
         return $infos;
     }
+    // récupère les sliders des articles
     public function getSlider($id_article)
     {
         $req = "SELECT * FROM slider 
@@ -69,7 +56,7 @@ class MainManager extends ImagesManager
         $stmt->closeCursor();
         return $infos;
     }
-
+    // récupère les videos des articles (liens youtube par exemple)
     public function getVideo($id_article)
     {
         $req = "SELECT * FROM videos 

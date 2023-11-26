@@ -3,6 +3,8 @@
 
 
 // fichier de connexion à bdd
+// les infos de connexion sont dans le fichier nommé ci-dessous
+
 require_once("./models/donnees_perso.model.php");
 
 abstract class Model

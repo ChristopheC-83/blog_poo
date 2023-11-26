@@ -2,19 +2,24 @@
 
 
 switch ($url[1]) {
+        //  accés à la page de profil
     case "profile":
         $userController->profilePage();
         break;
+        // déconnexion
     case "logout":
         $userController->logout();
         break;
+        //  modification du mail de l'utilisateur
     case "modify_mail":
         $newMail = Tools::secureHTML($_POST['new_mail']);
         $userController->modifyMail($newMail);
         break;
+        // page modification du mot de passe de l'utilisateur
     case "modify_password":
         $userController->modifyPasswordPage();
         break;
+        // validation modification du mot de passe de l'utilisateur
     case "send_new_password":
         if (!empty($_POST['password']) && !empty($_POST['new_password']) && !empty($_POST['verif_password'])) {
             $old_password = Tools::secureHTML($_POST["password"]);
@@ -26,11 +31,12 @@ switch ($url[1]) {
             header('Location: ' . URL . 'account/modify_password');
         }
         break;
+        //  modification de l'avatar par un avatar générique du site
     case "modify_avatar_by_site":
         $newAvatar = Tools::secureHTML($_POST['avatar']);
         $userController->modifyAvatarBySite($newAvatar);
         break;
-
+        //  modification de l'avatar par un avatar personnel de l'utilisateur
     case "modify_image_by_perso":
         if ($_FILES['image']['size'] > 0) {
             $userController->modifyAvatarByPerso($_FILES['image']);
@@ -39,7 +45,7 @@ switch ($url[1]) {
             header('location:' . URL . "profil");
         }
         break;
-
+        //  suppression irréversible du compte de l'utilisateur
     case "delete_account":
         $userController->deleteAccount();
         break;
