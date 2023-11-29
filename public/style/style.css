@@ -124,6 +124,7 @@ h1 {
   font-size: clamp(32px, 24px + 2.2vw, 60px);
   letter-spacing: calc(1px + 0.12vw);
   text-shadow: 1px 1px 2px var(--text_2);
+  text-align: center;
 }
 
 h2 {
@@ -193,6 +194,14 @@ p {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.m10 {
+  margin: 10px;
+}
+
+.m20 {
+  margin: 20px;
 }
 
 .overlay {
@@ -989,6 +998,31 @@ header h2 {
 
 .blind {
   opacity: 0;
+}
+
+.new_post h3 {
+  margin-top: -10px;
+  margin-bottom: 40px;
+}
+.new_post .entryForm a {
+  width: clamp(250px, 30vw, 450px);
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 10px;
+  transition: all 0.15s;
+  box-shadow: 0px 4px 4px 0px var(--shadow_1);
+  background-color: var(--border_3);
+  color: var(--text_2);
+  font-weight: bold;
+  cursor: pointer;
+}
+.new_post .entryForm a:hover {
+  transform: translateY(3px);
+  box-shadow: 0px 1px 1px 0px var(--shadow_1);
+  color: var(--text_1);
+  background-color: var(--border_1);
 }
 
 .usersArray {

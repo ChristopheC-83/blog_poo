@@ -2,3 +2,8 @@
 Au déploiement, changer adresse dans :
 - home_page_animated_grid.js => isHomepage
 - index.php => sliderPath
+
+
+Dans les topics
+- projets guidés, on donne des indices étape par étape
+- codons ensemble, on fait le projet directement
