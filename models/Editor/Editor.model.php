@@ -1,9 +1,9 @@
 <?php
 
 
-require_once("./models/User/User.model.php");
+require_once("./models/Visitor/VisitorArticles.model.php");
 
-class EditorManager extends UserManager
+class EditorManager extends VisitorArticlesManager
 {
     public function  getAllTemplates(){
         $req = "SELECT * FROM templates";
@@ -15,13 +15,13 @@ class EditorManager extends UserManager
     
     }
 
-    public function validationCardPostDB($title, $pitch, $theme, $templateArticle, $url){
+    public function validationCardPostDB($title, $pitch, $topic, $templateArticle, $url){
     
-        $req = "INSERT INTO articles (titre, pitch, theme, templateArticle, url) VALUES (:titre, :pitch, :theme, :templateArticle, :url)";
+        $req = "INSERT INTO posts (titre, pitch, topic, templateArticle, url) VALUES (:titre, :pitch, :topic, :templateArticle, :url)";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->bindParam (":titre", $title, PDO::PARAM_STR);
         $stmt->bindParam (":pitch", $pitch, PDO::PARAM_STR);
-        $stmt->bindParam (":theme", $theme, PDO::PARAM_STR);
+        $stmt->bindParam (":topic", $topic, PDO::PARAM_STR);
         $stmt->bindParam (":templateArticle", $templateArticle, PDO::PARAM_STR);
         $stmt->bindParam (":url", $url, PDO::PARAM_STR);
         $stmt->execute();

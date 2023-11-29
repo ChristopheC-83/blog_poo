@@ -5,8 +5,9 @@ switch ($url[1]) {
     case "write_card_post":
         $editorController->writeCardPost();
         break;
+
     case "validation_card_post":
-        // Tools::showArray($_POST);
+        Tools::showArray($_POST);
 
         $title = Tools::secureHTML($_POST['title']);
         $pitch = Tools::secureHTML($_POST['pitch']);
@@ -25,9 +26,16 @@ switch ($url[1]) {
             $editorController->validationCardPost($title, $pitch, $topic, $templateArticle, $url);
         }
         break;
-        case "write_text_post":
-            // $editorController->writeTextPost();
-            break;
+    case "write_text_post":
+        $maxId = $visitorArticlesManager->getMaxIdPost();
+        $maxId = $maxId['MAX(id_article)'];
+        if (!isset($_POST['selectPost'])) {
+            $editorController->writeTextPost($maxId);
+        } else {
+            $editorController->writeTextPost($_POST['selectPost']);
+        }
+
+        break;
     case "modify_post":
         $editorController->modifyPost();
         break;

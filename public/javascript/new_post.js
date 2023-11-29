@@ -10,13 +10,21 @@ function allFieldsCompleted() {
     btnNewPostCard.classList.add("disabled");
   }
 }
+if (title) {
+  title.addEventListener("keyup", () => {
+    allFieldsCompleted();
+  });
+  pitch.addEventListener("keyup", () => {
+    allFieldsCompleted();
+  });
+  url.addEventListener("keyup", () => {
+    allFieldsCompleted();
+  });
+}
 
-title.addEventListener("keyup", () => {
-    allFieldsCompleted();
-});
-pitch.addEventListener("keyup", () => {
-    allFieldsCompleted();
-});
-url.addEventListener("keyup", () => {
-    allFieldsCompleted();
-});
+const selectPost = document.querySelector("#selectPost");
+if (selectPost) {
+  selectPost.addEventListener("change", function () {
+    document.getElementById("containerNewPostCard").submit();
+  });
+}

@@ -30,6 +30,8 @@ class MainManager extends ImagesManager
         $stmt->closeCursor();
         return $infos;
     }
+    
+    
     // récupère les textes des articles
     public function getTextesById($id_article)
     {

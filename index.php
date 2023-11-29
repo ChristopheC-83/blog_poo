@@ -26,6 +26,7 @@ require_once("./controllers/Editor/Editor.controller.php");
 require_once("./controllers/Admin/Administrator.controller.php");
 $mainManager = new MainManager();
 $visitorArticlesManager = new VisitorArticlesManager();
+$visitorArticlesManager = new VisitorArticlesManager();
 $visitorController = new VisitorController();
 $userController = new UserController();
 $editorController = new EditorController();

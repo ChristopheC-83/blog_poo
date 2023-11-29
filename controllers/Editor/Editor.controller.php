@@ -4,6 +4,7 @@
 
 require_once("./controllers/Functions.controller.php");
 require_once("./models/Editor/Editor.model.php");
+require_once("./models/Visitor/VisitorArticles.model.php");
 
 class EditorController extends MainController
 {
@@ -22,14 +23,15 @@ class EditorController extends MainController
         $templateForms = $this->editorManager->getAllTemplates();
         // Tools::showArray($templates);
         // Tools::showArray($topics);
+
         $data_page = [
             "page_description" => "Page de profil",
             "page_title" => "Page de profil",
-            "js" => ['https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js', 'new_post.js'],
+            "js" => ['new_post.js'],
             "topics" => $topics,
             "templateForms" => $templateForms,
-            "view" => "./views/Editor/writePostPage.view.php",
-            "template" => "./views/templates/templateWritePage.php",
+            "view" => "./views/Editor/writeCardPostPage.view.php",
+            "template" => "./views/templates/template.php",
         ];
         $this->functions->generatePage($data_page);
     }
@@ -43,9 +45,36 @@ class EditorController extends MainController
             header('location:' . URL . "editor/write_text_post");
         } else {
             Tools::alertMessage("Une erreur est survenue, veuillez réessayer", "red");
-            header('location:' . URL . "editor/write_post");
+            header('location:' . URL . "editor/write_card_post");
         }
     }
+
+    public function writeTextPost($id)
+    {
+
+        $posts = $this->editorManager->getInfosAllPosts();
+        $postSelected = $this->editorManager->getInfosPost($id);
+        $data_page = [
+            "page_description" => "Page de profil",
+            "page_title" => "Page de profil",
+            "js" => ['https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js', 'new_post.js'],
+            "posts" => $posts,
+            "postSelected" => $postSelected,
+            "view" => "./views/Editor/writeTextPostPage.view.php",
+            "template" => "./views/templates/templateWritePage.php",
+        ];
+        $this->functions->generatePage($data_page);
+    }
+
+
+
+
+
+
+
+
+
+
     //  modifier un article ssi écrit par cet editeur
     public function modifyPost()
     {

@@ -24,6 +24,19 @@ class VisitorArticlesManager extends MainManager
         $stmt->closeCursor();
         return $infos;
     }
+    public function getMaxIdPost(){
+        $req = "SELECT MAX(id_article) FROM posts";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->execute();
+        $infos = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $infos;
+    
+    
+    
+    
+    
+    }
     public function chosenTopic($topic)
     {
         $req = "SELECT * FROM topics WHERE topic = :topic";
