@@ -66,6 +66,22 @@ class EditorController extends MainController
         $this->functions->generatePage($data_page);
     }
 
+    public function validationTextPost($id_article, $titre1, $texte1, $titre2, $texte2)
+    {
+        if ($this->editorManager->validationTextPostDB($id_article, 1, $titre1, $texte1)) {
+            if (
+                $this->editorManager->validationTextPostDB($id_article, 2, $titre2, $texte2)
+            ) {
+                Tools::alertMessage("Votre article a bien été enregistré", "green");
+                header('location:' . URL . "editor/write_text_post");
+            } else {
+                Tools::alertMessage("Une erreur est survenue, veuillez réessayer", "red");
+                header('location:' . URL . "editor/write_text_post");
+            }
+        }
+    }
+
+
 
 
 

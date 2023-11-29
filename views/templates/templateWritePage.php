@@ -12,7 +12,7 @@ header('Content-Type: text/html; charset=utf-8');
 
     <script>
         tinymce.init({
-            selector: '#mytextarea'
+            selector: '.mytextarea'
         });
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">

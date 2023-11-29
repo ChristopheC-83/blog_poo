@@ -1025,6 +1025,24 @@ header h2 {
   background-color: var(--border_1);
 }
 
+.infos_post {
+  width: clamp(300px, 50vw, 800px);
+}
+
+.area_text {
+  width: 100%;
+  min-height: 400px;
+}
+
+.inputTextForm {
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .area_text {
+    width: 96%;
+  }
+}
 .usersArray {
   width: 80%;
   text-align: center;
