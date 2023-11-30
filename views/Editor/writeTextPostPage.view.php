@@ -5,7 +5,7 @@
     <?= Tools::showArray($postSelected) ?>
 
 
-    <form action="<?= URL ?>editor/write_text_post" method="POST" class="containerForm" id="containerNewPostCard">
+    <form action="<?= URL ?>editor/validation_text_post" method="POST" class="containerForm" id="containerNewPostCard">
         <div class="entryForm">
             <label for="selectPost">Pour quel article ?</label>
             <select name="selectPost" id="selectPost">

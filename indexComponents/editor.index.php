@@ -37,22 +37,39 @@ switch ($url[1]) {
 
         break;
     case "validation_text_post":
-        Tools::showArray($_POST);
+        // Tools::showArray($_POST);
         $id_article = Tools::secureHTML($_POST['id_article']);
         $titre1 = Tools::secureHTML($_POST['titre1']);
-        $texte1 = Tools::secureHTML($_POST['texte1']);  
+        $texte1 = Tools::secureHTML($_POST['texte1']);
         $titre2 = Tools::secureHTML($_POST['titre2']);
         $texte2 = Tools::secureHTML($_POST['texte2']);
 
         if (
-            empty($titre1) 
+            empty($titre1)
         ) {
             Tools::alertMessage("Il faut renseigner au moins le titre 1", "red");
             header('location:' . URL . "editor/write_text_post");
         } else {
             $editorController->validationTextPost($id_article, $titre1, $texte1, $titre2, $texte2);
+            Tools::alertMessage("Elements envoyés à validationTextPost", "green "); // A SUPPRIMER
         }
 
+
+
+
+        break;
+
+
+
+    case "add_media_post":
+
+        $maxId = $visitorArticlesManager->getMaxIdPost();
+        $maxId = $maxId['MAX(id_article)'];
+        if (!isset($_POST['selectPost'])) {
+            $editorController->addMediaPost($maxId);
+        } else {
+            $editorController->addMediaPost($_POST['selectPost']);
+        }
 
 
         break;
