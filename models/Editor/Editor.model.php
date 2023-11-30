@@ -32,26 +32,22 @@ class EditorManager extends VisitorArticlesManager
     }
     public function validationTextPostDB($id_article, $num_article, $titre, $texte)
     {
-        echo $id_article;
-        echo "<br>";
-        echo $num_article;
-        echo "<br>";
-        echo $titre;
-        echo "<br>";
-        echo $texte;
-        echo "<br>";
-        echo "truc";
-        echo "<br>";
+        // echo $id_article;
+        // echo  $num_article;
+        // echo  $titre;
+        // echo  $texte;
 
-        // $req = "INSERT INTO textes (id_article, num_article, titre, texte) VALUES (:id_article, :num_article, :titre, :texte)";
-        // $stmt = $this->getBDD()->prepare($req);
-        // $stmt->bindParam(":id_article", $id_article, PDO::PARAM_INT);
-        // $stmt->bindParam(":num_article", $num_article, PDO::PARAM_INT);
-        // $stmt->bindParam(":titre", $titre, PDO::PARAM_STR);
-        // $stmt->bindParam(":texte", $texte, PDO::PARAM_STR);
-        // $stmt->execute();
-        // $isCreate = ($stmt->rowCount() > 0);
-        // $stmt->closeCursor();
-        // return $isCreate;
+        $req = 'INSERT INTO textes 
+        (id_article, num_article, titre, texte) 
+        values (:id_article, :num_article, :titre, :texte)
+        ';
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":id_article", $id_article, PDO::PARAM_STR);
+        $stmt->bindValue(":num_article", $num_article, PDO::PARAM_STR);
+        $stmt->bindValue(":titre", $titre, PDO::PARAM_STR);
+        $stmt->bindValue(":texte", $texte, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->closeCursor();
+        return $texte;
     }
 }

@@ -68,16 +68,14 @@ class EditorController extends MainController
 
     public function validationTextPost($id_article, $titre1, $texte1, $titre2, $texte2)
     {
-        $this->editorManager->validationTextPostDB($id_article, 1, $titre1, $texte1);
-        $this->editorManager->validationTextPostDB($id_article, 2, $titre2, $texte2);
-        // if ($this->editorManager->validationTextPostDB($id_article, 1, $titre1, $texte1)) {
-        //     $this->editorManager->validationTextPostDB($id_article, 2, $titre2, $texte2);
-        //     Tools::alertMessage("Votre article a bien été enregistré", "green");
-        //     header('location:' . URL . "editor/add_media_post");
-        // } else {
-        //     Tools::alertMessage("Une erreur est survenue, veuillez réessayer", "red");
-        //     header('location:' . URL . "editor/write_text_post");
-        // }
+        if ($this->editorManager->validationTextPostDB($id_article, 1, $titre1, $texte1)) {
+            $this->editorManager->validationTextPostDB($id_article, 2, $titre2, $texte2);
+            Tools::alertMessage("Votre article a bien été enregistré", "green");
+            header('location:' . URL . "editor/add_media_post");
+        } else {
+            Tools::alertMessage("Une erreur est survenue, veuillez réessayer", "red");
+            header('location:' . URL . "editor/write_text_post");
+        }
     }
 
     public function addMediaPost($id)

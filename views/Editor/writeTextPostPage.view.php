@@ -2,9 +2,6 @@
     <h1>Nouveau Post</h1>
     <h3 class="text-center ">Ecrivons le texte</h3>
 
-    <?= Tools::showArray($postSelected) ?>
-
-
     <form action="<?= URL ?>editor/validation_text_post" method="POST" class="containerForm" id="containerNewPostCard">
         <div class="entryForm">
             <label for="selectPost">Pour quel article ?</label>
@@ -20,6 +17,7 @@
             <p class="infos_post"><b>Topic : </b><?= $postSelected['topic'] ?></p>
             <p class="infos_post"><b>Pitch Carte : </b><?= $postSelected['pitch'] ?></p>
             <p class="infos_post"><b>Template : </b><?= $postSelected['templateArticle'] ?></p>
+            <p class="infos_post"><b>URL : </b><?= $postSelected['url'] ?></p>
         </div>
     </div>
     <form method="post"  action ="<?= URL ?>editor/validation_text_post" class="containerForm">
@@ -39,5 +37,3 @@
         </div>
     </form>
 </div>
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, ab! Nisi placeat adipisci obcaecati asperiores?

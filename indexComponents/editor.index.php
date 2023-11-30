@@ -51,7 +51,6 @@ switch ($url[1]) {
             header('location:' . URL . "editor/write_text_post");
         } else {
             $editorController->validationTextPost($id_article, $titre1, $texte1, $titre2, $texte2);
-            Tools::alertMessage("Elements envoyés à validationTextPost", "green "); // A SUPPRIMER
         }
 
 
