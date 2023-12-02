@@ -21,14 +21,14 @@
                 <?php endforeach; ?>
             </select>
         </div>
-        <div class="entryForm">
+        <!-- <div class="entryForm">
             <label for="templateArticle">Template</label>
             <select name="templateArticle" id="templateArticle">
                 <?php foreach ($templateForms as $templateForm) : ?>
                     <option value="<?= $templateForm['template']  ?>"><?= $templateForm['template']  ?></option>
                 <?php endforeach; ?>
             </select>
-        </div>
+        </div> -->
         <div class="entryForm">
             <label for="url">URL post</label>
             <input type="text" name="url" id="url">

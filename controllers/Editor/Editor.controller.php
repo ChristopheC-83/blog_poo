@@ -36,10 +36,10 @@ class EditorController extends MainController
         $this->functions->generatePage($data_page);
     }
 
-    public function validationCardPost($title, $pitch, $topic, $templateArticle, $url)
+    public function validationCardPost($title, $pitch, $topic, $url)
     {
         if (
-            $this->editorManager->validationCardPostDB($title, $pitch, $topic, $templateArticle, $url)
+            $this->editorManager->validationCardPostDB($title, $pitch, $topic, $url)
         ) {
             Tools::alertMessage("Votre article a bien été enregistré", "green");
             header('location:' . URL . "editor/write_text_post");
@@ -80,7 +80,7 @@ class EditorController extends MainController
 
     public function addMediaPost($id)
     {
-
+        $templates = $this->editorManager->getAllTemplates();
         $posts = $this->editorManager->getInfosAllPosts();
         $postSelected = $this->editorManager->getInfosPost($id);
         $data_page = [
@@ -88,6 +88,7 @@ class EditorController extends MainController
             "page_title" => "Page de profil",
             "js" => ['new_post.js'],
             "posts" => $posts,
+            "templates" => $templates,
             "postSelected" => $postSelected,
             "view" => "./views/Editor/addMediaPost.view.php",
             "template" => "./views/templates/template.php",
@@ -96,8 +97,18 @@ class EditorController extends MainController
     }
 
 
-
-
+    public function validationTemplatePost($id_article, $templatePost){
+        {
+            if ($this->editorManager->updateTemplatePostDB($id_article,$templatePost)) {
+                Tools::alertMessage("Votre template a bien été choisi.", "green");
+                header('location:' . URL . "editor/add_media_post");
+            } else {
+                Tools::alertMessage("Une erreur est survenue, veuillez réessayer", "red");
+                header('location:' . URL . "editor/add_media_post");
+            }
+        }
+        
+    }
 
 
 

@@ -12,7 +12,7 @@ switch ($url[1]) {
         $title = Tools::secureHTML($_POST['title']);
         $pitch = Tools::secureHTML($_POST['pitch']);
         $topic = Tools::secureHTML($_POST['topic']);
-        $templateArticle = Tools::secureHTML($_POST['templateArticle']);
+        // $templateArticle = Tools::secureHTML($_POST['templateArticle']);
         $url = Tools::secureHTML($_POST['url']);
 
         if (
@@ -23,7 +23,7 @@ switch ($url[1]) {
             Tools::alertMessage("Il faut renseigner tous les champs", "red");
             header('location:' . URL . "editor/write_post");
         } else {
-            $editorController->validationCardPost($title, $pitch, $topic, $templateArticle, $url);
+            $editorController->validationCardPost($title, $pitch, $topic, $url);
         }
         break;
     case "write_text_post":
@@ -52,16 +52,8 @@ switch ($url[1]) {
         } else {
             $editorController->validationTextPost($id_article, $titre1, $texte1, $titre2, $texte2);
         }
-
-
-
-
         break;
-
-
-
     case "add_media_post":
-
         $maxId = $visitorArticlesManager->getMaxIdPost();
         $maxId = $maxId['MAX(id_article)'];
         if (!isset($_POST['selectPost'])) {
@@ -69,9 +61,17 @@ switch ($url[1]) {
         } else {
             $editorController->addMediaPost($_POST['selectPost']);
         }
-
-
         break;
+
+    case "validation_template_post":
+        $templatePost = Tools::secureHTML($_POST['templatePost']);
+        $id_article = Tools::secureHTML($_POST['id_article']);
+        $editorController->validationTemplatePost($id_article, $templatePost);
+        break;
+
+
+
+
     case "modify_post":
         $editorController->modifyPost();
         break;

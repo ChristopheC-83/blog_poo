@@ -28,3 +28,9 @@ if (selectPost) {
     document.getElementById("containerNewPostCard").submit();
   });
 }
+const selectTemplate = document.querySelector("#selectTemplate");
+if (selectTemplate) {
+  selectTemplate.addEventListener("change", function () {
+    document.getElementById("containerNewTemplate").submit();
+  });
+}

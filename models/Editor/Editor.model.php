@@ -15,15 +15,15 @@ class EditorManager extends VisitorArticlesManager
         return $templates;
     }
 
-    public function validationCardPostDB($title, $pitch, $topic, $templateArticle, $url)
+    public function validationCardPostDB($title, $pitch, $topic, $url)
     {
 
-        $req = "INSERT INTO posts (titre, pitch, topic, templateArticle, url) VALUES (:titre, :pitch, :topic, :templateArticle, :url)";
+        $req = "INSERT INTO posts (titre, pitch, topic, url) VALUES (:titre, :pitch, :topic, :url)";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->bindParam(":titre", $title, PDO::PARAM_STR);
         $stmt->bindParam(":pitch", $pitch, PDO::PARAM_STR);
         $stmt->bindParam(":topic", $topic, PDO::PARAM_STR);
-        $stmt->bindParam(":templateArticle", $templateArticle, PDO::PARAM_STR);
+        // $stmt->bindParam(":templateArticle", $templateArticle, PDO::PARAM_STR);
         $stmt->bindParam(":url", $url, PDO::PARAM_STR);
         $stmt->execute();
         $isCreate = ($stmt->rowCount() > 0);
@@ -32,11 +32,6 @@ class EditorManager extends VisitorArticlesManager
     }
     public function validationTextPostDB($id_article, $num_article, $titre, $texte)
     {
-        // echo $id_article;
-        // echo  $num_article;
-        // echo  $titre;
-        // echo  $texte;
-
         $req = 'INSERT INTO textes 
         (id_article, num_article, titre, texte) 
         values (:id_article, :num_article, :titre, :texte)
@@ -49,5 +44,17 @@ class EditorManager extends VisitorArticlesManager
         $stmt->execute();
         $stmt->closeCursor();
         return $texte;
+    }
+
+    public function updateTemplatePostDB($id_article, $templateArticle)
+    {
+        $req = "UPDATE posts SET templateArticle = :templateArticle WHERE id_article = :id_article";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindParam(":id_article", $id_article, PDO::PARAM_INT);
+        $stmt->bindParam(":templateArticle", $templateArticle, PDO::PARAM_STR);
+        $stmt->execute();
+        $isUpdate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isUpdate;
     }
 }
