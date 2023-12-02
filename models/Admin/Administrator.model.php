@@ -1,9 +1,9 @@
 <?php
 
 
-require_once("./models/Editor/Editor.model.php");
+require_once("./models/User/User.model.php");
 
-class AdministratorManager extends EditorManager
+class AdministratorManager extends UserManager
 {
     //  récupère les infos de tous les utilisateurs pour gestions comptes
     public function getUsers()

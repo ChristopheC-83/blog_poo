@@ -56,7 +56,7 @@ class VisitorController extends MainController
         $infosArticle = $this->visitorArticlesManager->getInfosPost($id_article);
         $images = $this->visitorArticlesManager->getImagesById($id_article);
         $textes = $this->visitorArticlesManager->getTextesById($id_article);
-        $themes = $this->visitorArticlesManager->getAllTopics();
+        $themes = $this->visitorArticlesManager->getAllThemes();
         $meta = $infosArticle['titre'];
         $templateArticle = $infosArticle['templateArticle'];
         $slider = $this->visitorArticlesManager->getSlider($id_article);
@@ -84,20 +84,20 @@ class VisitorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
-    //  page avec les post pour un topic choisi
-    public function topicPage($topic)
+    //  page avec les post pour un theme choisi
+    public function themePage($theme)
     {
-        $topicPage = $this->visitorArticlesManager->chosenTopic($topic);
-        $postsFromTopic = $this->visitorArticlesManager->postsFromTopic($topic);
+        $themePage = $this->visitorArticlesManager->chosenTheme($theme);
+        $postsFromTheme = $this->visitorArticlesManager->postsFromTheme($theme);
 
         $data_page = [
             "meta_description" => "Partage d'expérience : ... ",
             "page_title" => "repaire d'un dev !",
-            "view" => "views/Visitor/topicPage.view.php",
+            "view" => "views/Visitor/themePage.view.php",
             "template" => "views/templates/template.php",
             "js" => ['home_page_animated_grid.js'],
-            "topicPage" => $topicPage,
-            "postsFromTopic" => $postsFromTopic,
+            "themePage" => $themePage,
+            "postsFromTheme" => $postsFromTheme,
         ];
         $this->functions->generatePage($data_page);
     }

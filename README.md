@@ -3,6 +3,13 @@
 <br><br>
 
 
+<h3>version 2.0</h3>
+refonte de la bdd.<br>
+une seule table Articles regourpant article, carte, texte, media.<br>
+On crée l'article.<br>
+Au fur et à mesure que l'on renseigne les élément, on peut mettre à jour les précédents.<br>
+
+
 
 <br>
 <br>

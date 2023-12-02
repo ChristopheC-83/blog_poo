@@ -15,14 +15,14 @@ class EditorManager extends VisitorArticlesManager
         return $templates;
     }
 
-    public function validationCardPostDB($title, $pitch, $topic, $url)
+    public function validationCardPostDB($title, $pitch, $theme, $url)
     {
 
-        $req = "INSERT INTO posts (titre, pitch, topic, url) VALUES (:titre, :pitch, :topic, :url)";
+        $req = "INSERT INTO articles (titre, pitch, theme, url) VALUES (:titre, :pitch, :theme, :url)";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->bindParam(":titre", $title, PDO::PARAM_STR);
         $stmt->bindParam(":pitch", $pitch, PDO::PARAM_STR);
-        $stmt->bindParam(":topic", $topic, PDO::PARAM_STR);
+        $stmt->bindParam(":theme", $theme, PDO::PARAM_STR);
         // $stmt->bindParam(":templateArticle", $templateArticle, PDO::PARAM_STR);
         $stmt->bindParam(":url", $url, PDO::PARAM_STR);
         $stmt->execute();

@@ -20,7 +20,7 @@ $textes
 
         <?php if (isset($images[0]['url_img']) && $images[0]['url_img'] !== '') : ?>
             <a href="<?= isset($images[0]['lien']) ? $images[0]['lien'] : '' ?>">
-                <img src="<?= imgFolder ?><?= $infosArticle['topic'] ?>/<?= $images[0]['url_img'] ?>" alt="<?= $images[0]['alt_img'] ?>">
+                <img src="<?= imgFolder ?><?= $infosArticle['theme'] ?>/<?= $images[0]['url_img'] ?>" alt="<?= $images[0]['alt_img'] ?>">
             </a>
         <?php endif ?>
 

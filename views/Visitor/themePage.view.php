@@ -1,14 +1,14 @@
 <div class="container ">
 
    <div class="intro">
-      <h1 class="uppercase"><?= isset($topicPage['topic']) ? $topicPage['topic'] : "" ?></h1>
-      <h3 class="text-center"><?= isset($topicPage['description_theme']) ? $topicPage['description_theme'] : "" ?></h3>
+      <h1 class="uppercase"><?= isset($themePage['theme']) ? $themePage['theme'] : "" ?></h1>
+      <h3 class="text-center"><?= isset($themePage['description_theme']) ? $themePage['description_theme'] : "" ?></h3>
       <br><br>
    </div>
 
    <div class="allCards">
-      <?php if (!empty($postsFromTopic)) : ?>
-         <?php foreach ($postsFromTopic as $article) : ?>
+      <?php if (!empty($postsFromtheme)) : ?>
+         <?php foreach ($postsFromtheme as $article) : ?>
             <?php require("./views/components/articleCard.php") ?>
          <?php endforeach ?>
       <?php else : ?>

@@ -11,7 +11,7 @@ switch ($url[1]) {
 
         $title = Tools::secureHTML($_POST['title']);
         $pitch = Tools::secureHTML($_POST['pitch']);
-        $topic = Tools::secureHTML($_POST['topic']);
+        $theme = Tools::secureHTML($_POST['theme']);
         // $templateArticle = Tools::secureHTML($_POST['templateArticle']);
         $url = Tools::secureHTML($_POST['url']);
 
@@ -23,7 +23,7 @@ switch ($url[1]) {
             Tools::alertMessage("Il faut renseigner tous les champs", "red");
             header('location:' . URL . "editor/write_post");
         } else {
-            $editorController->validationCardPost($title, $pitch, $topic, $url);
+            $editorController->validationCardPost($title, $pitch, $theme, $url);
         }
         break;
     case "write_text_post":

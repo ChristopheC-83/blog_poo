@@ -58,9 +58,9 @@ try {
             $visitorController->homePage();
             break;
             // page avec les post du theme choisi dans la navbar
-        case "topic":
-            $chosenTopic = Tools::secureHTML($url[1]);
-            $visitorController->topicPage($chosenTopic);
+        case "theme":
+            $chosenTheme = Tools::secureHTML($url[1]);
+            $visitorController->themePage($chosenTheme);
             break;
             // page de connection à son compte d'un utilisateur
         case "connection":

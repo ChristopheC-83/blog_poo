@@ -14,10 +14,10 @@
             <input type="text" name="pitch" id="pitch">
         </div>
         <div class="entryForm">
-            <label for="topic">Topic</label>
-            <select name="topic" id="topic">
-                <?php foreach ($topics as $topic) : ?>
-                    <option value="<?= $topic['topic']  ?>"><?= $topic['topic']  ?></option>
+            <label for="theme">theme</label>
+            <select name="theme" id="theme">
+                <?php foreach ($themes as $theme) : ?>
+                    <option value="<?= $theme['theme']  ?>"><?= $theme['theme']  ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

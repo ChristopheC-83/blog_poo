@@ -37,21 +37,21 @@ class VisitorArticlesManager extends MainManager
     
     
     }
-    public function chosenTopic($topic)
+    public function chosenTheme($theme)
     {
-        $req = "SELECT * FROM topics WHERE topic = :topic";
+        $req = "SELECT * FROM themes WHERE theme = :theme";
         $stmt = $this->getBDD()->prepare($req);
-        $stmt->bindValue(':topic', $topic, PDO::PARAM_STR);
+        $stmt->bindValue(':theme', $theme, PDO::PARAM_STR);
         $stmt->execute();
         $infos = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         return $infos;
     }
-    public function postsFromTopic($topic)
+    public function postsFromTheme($theme)
     {
-        $req = "SELECT * FROM posts WHERE topic = :topic";
+        $req = "SELECT * FROM posts WHERE theme = :theme";
         $stmt = $this->getBDD()->prepare($req);
-        $stmt->bindValue(':topic', $topic, PDO::PARAM_STR);
+        $stmt->bindValue(':theme', $theme, PDO::PARAM_STR);
         $stmt->execute();
         $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt->closeCursor();

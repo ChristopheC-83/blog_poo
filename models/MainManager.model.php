@@ -8,9 +8,9 @@ require_once("./models/Images.model.php");
 class MainManager extends ImagesManager
 {
     // récupérer les themes pour faire par exemple les boutons de la barre de menu
-    public function getAllTopics()
+    public function getAllThemes()
     {
-        $req = "SELECT * FROM topics ORDER BY id_topic asc";
+        $req = "SELECT * FROM themes ORDER BY id_theme asc";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->execute();
         $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);

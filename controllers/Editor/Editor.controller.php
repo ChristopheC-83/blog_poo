@@ -19,16 +19,16 @@ class EditorController extends MainController
     public function writeCardPost()
     {
 
-        $topics = $this->editorManager->getAllTopics();
+        $themes = $this->editorManager->getAllThemes();
         $templateForms = $this->editorManager->getAllTemplates();
         // Tools::showArray($templates);
-        // Tools::showArray($topics);
+        // Tools::showArray($themes);
 
         $data_page = [
             "page_description" => "Page de profil",
             "page_title" => "Page de profil",
             "js" => ['new_post.js'],
-            "topics" => $topics,
+            "themes" => $themes,
             "templateForms" => $templateForms,
             "view" => "./views/Editor/writeCardPostPage.view.php",
             "template" => "./views/templates/template.php",
@@ -36,10 +36,10 @@ class EditorController extends MainController
         $this->functions->generatePage($data_page);
     }
 
-    public function validationCardPost($title, $pitch, $topic, $url)
+    public function validationCardPost($title, $pitch, $theme, $url)
     {
         if (
-            $this->editorManager->validationCardPostDB($title, $pitch, $topic, $url)
+            $this->editorManager->validationCardPostDB($title, $pitch, $theme, $url)
         ) {
             Tools::alertMessage("Votre article a bien été enregistré", "green");
             header('location:' . URL . "editor/write_text_post");

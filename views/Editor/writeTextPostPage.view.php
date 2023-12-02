@@ -14,7 +14,7 @@
     </form>
     <div class="containerForm" style="margin : 20px 0">
         <div class="entryForm">
-            <p class="infos_post"><b>Topic : </b><?= $postSelected['topic'] ?></p>
+            <p class="infos_post"><b>theme : </b><?= $postSelected['theme'] ?></p>
             <p class="infos_post"><b>Pitch Carte : </b><?= $postSelected['pitch'] ?></p>
             <p class="infos_post"><b>Template : </b><?= $postSelected['templateArticle'] ?></p>
             <p class="infos_post"><b>URL : </b><?= $postSelected['url'] ?></p>
