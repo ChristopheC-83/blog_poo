@@ -50,10 +50,10 @@ class VisitorController extends MainController
         $numFiles = count($files);
         return $numFiles;
     }
-    // creation d'un page avec un post
-    public function postPage($id_article)
+    // creation d'un page avec un article
+    public function articlePage($id_article)
     {
-        $infosArticle = $this->visitorArticlesManager->getInfosPost($id_article);
+        $infosArticle = $this->visitorArticlesManager->getInfosarticle($id_article);
         $images = $this->visitorArticlesManager->getImagesById($id_article);
         $textes = $this->visitorArticlesManager->getTextesById($id_article);
         $themes = $this->visitorArticlesManager->getAllThemes();
@@ -70,7 +70,7 @@ class VisitorController extends MainController
         $data_page = [
             "meta_description" => "Partage d'expérience : $meta ",
             "page_title" => "repaire d'un dev !",
-            "view" => "views/templates/template_post.view.php",
+            "view" => "views/templates/template_article.view.php",
             "template" => "views/templates/template.php",
             "themes" => $themes,
             "infosArticle" => $infosArticle,
@@ -84,11 +84,11 @@ class VisitorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
-    //  page avec les post pour un theme choisi
+    //  page avec les article pour un theme choisi
     public function themePage($theme)
     {
         $themePage = $this->visitorArticlesManager->chosenTheme($theme);
-        $postsFromTheme = $this->visitorArticlesManager->postsFromTheme($theme);
+        $articlesFromTheme = $this->visitorArticlesManager->articlesFromTheme($theme);
 
         $data_page = [
             "meta_description" => "Partage d'expérience : ... ",
@@ -97,7 +97,7 @@ class VisitorController extends MainController
             "template" => "views/templates/template.php",
             "js" => ['home_page_animated_grid.js'],
             "themePage" => $themePage,
-            "postsFromTheme" => $postsFromTheme,
+            "articlesFromTheme" => $articlesFromTheme,
         ];
         $this->functions->generatePage($data_page);
     }

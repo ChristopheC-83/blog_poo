@@ -15,7 +15,7 @@ class EditorManager extends VisitorArticlesManager
         return $templates;
     }
 
-    public function validationCardPostDB($title, $pitch, $theme, $url)
+    public function validationCardArticleDB($title, $pitch, $theme, $url)  
     {
 
         $req = "INSERT INTO articles (titre, pitch, theme, url) VALUES (:titre, :pitch, :theme, :url)";
@@ -30,25 +30,11 @@ class EditorManager extends VisitorArticlesManager
         $stmt->closeCursor();
         return $isCreate;
     }
-    public function validationTextPostDB($id_article, $num_article, $titre, $texte)
-    {
-        $req = 'INSERT INTO textes 
-        (id_article, num_article, titre, texte) 
-        values (:id_article, :num_article, :titre, :texte)
-        ';
-        $stmt = $this->getBdd()->prepare($req);
-        $stmt->bindValue(":id_article", $id_article, PDO::PARAM_STR);
-        $stmt->bindValue(":num_article", $num_article, PDO::PARAM_STR);
-        $stmt->bindValue(":titre", $titre, PDO::PARAM_STR);
-        $stmt->bindValue(":texte", $texte, PDO::PARAM_STR);
-        $stmt->execute();
-        $stmt->closeCursor();
-        return $texte;
-    }
+   
 
-    public function updateTemplatePostDB($id_article, $templateArticle)
+    public function updateTemplateArticleDB($id_article, $templateArticle)
     {
-        $req = "UPDATE posts SET templateArticle = :templateArticle WHERE id_article = :id_article";
+        $req = "UPDATE articles SET templateArticle = :templateArticle WHERE id_article = :id_article";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->bindParam(":id_article", $id_article, PDO::PARAM_INT);
         $stmt->bindParam(":templateArticle", $templateArticle, PDO::PARAM_STR);

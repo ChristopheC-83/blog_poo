@@ -7,8 +7,8 @@
    </div>
 
    <div class="allCards">
-      <?php if (!empty($postsFromtheme)) : ?>
-         <?php foreach ($postsFromtheme as $article) : ?>
+      <?php if (!empty($articlesFromtheme)) : ?>
+         <?php foreach ($articlesFromtheme as $article) : ?>
             <?php require("./views/components/articleCard.php") ?>
          <?php endforeach ?>
       <?php else : ?>

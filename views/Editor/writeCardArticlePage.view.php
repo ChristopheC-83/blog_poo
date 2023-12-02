@@ -1,10 +1,10 @@
-<div class="container new_post">
-    <h1>Nouveau Post</h1>
+<div class="container new_article">
+    <h1>Nouveau Article</h1>
     <h3 class="text-center ">Commençons par créer la fiche</h3>
 
 
 
-    <form action="<?= URL ?>editor/validation_card_post" method="POST" class="containerForm" id="containerNewPostCard">
+    <form action="<?= URL ?>editor/validation_card_article" method="POST" class="containerForm" id="containerNewArticleCard">
         <div class="entryForm">
             <label for="title">Titre Carte</label>
             <input type="text" name="title" id="title">
@@ -30,12 +30,12 @@
             </select>
         </div> -->
         <div class="entryForm">
-            <label for="url">URL post</label>
+            <label for="url">URL article</label>
             <input type="text" name="url" id="url">
         </div>
 
         <div class="entryForm ">
-            <button type="submit" class="disabled" id="btnNewPostCard">
+            <button type="submit" class="disabled" id="btnNewArticleCard">
                 <p>Je crée la fiche </p>
             </button>
         </div>
@@ -50,7 +50,4 @@
 
     </form>
 
-    <!-- <form method="post">
-        <textarea id="mytextarea">Hello, World!</textarea>
-    </form> -->
 </div>

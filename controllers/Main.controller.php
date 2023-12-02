@@ -22,7 +22,7 @@ class MainController extends ImageController
     public function homePage()
     {
         // affiche tous les articles
-        $infosArticles = $this->visitorArticlesManager->getInfosAllPosts();
+        $infosArticles = $this->visitorArticlesManager->getInfosAllArticles();
 
         $data_page = [
             "page_description" => "Description accueil",

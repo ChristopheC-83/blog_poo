@@ -32,43 +32,5 @@ class MainManager extends ImagesManager
     }
     
     
-    // récupère les textes des articles
-    public function getTextesById($id_article)
-    {
-        $req = "SELECT * FROM textes 
-        WHERE id_article = :id_article
-        ";
-        $stmt = $this->getBDD()->prepare($req);
-        $stmt->bindValue(':id_article', $id_article, PDO::PARAM_INT);
-        $stmt->execute();
-        $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $infos;
-    }
-    // récupère les sliders des articles
-    public function getSlider($id_article)
-    {
-        $req = "SELECT * FROM slider 
-            WHERE id_article = :id_article
-            ";
-        $stmt = $this->getBDD()->prepare($req);
-        $stmt->bindValue(':id_article', $id_article, PDO::PARAM_INT);
-        $stmt->execute();
-        $infos = $stmt->fetch(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $infos;
-    }
-    // récupère les videos des articles (liens youtube par exemple)
-    public function getVideo($id_article)
-    {
-        $req = "SELECT * FROM videos 
-            WHERE id_article = :id_article
-            ";
-        $stmt = $this->getBDD()->prepare($req);
-        $stmt->bindValue(':id_article', $id_article, PDO::PARAM_INT);
-        $stmt->execute();
-        $infos = $stmt->fetch(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $infos;
-    }
+ 
 }
