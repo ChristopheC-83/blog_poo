@@ -70,6 +70,15 @@
                     </a>
                 </div>
             </div>
+            <div class="infoProfile">
+                <div class="modifyPasswordPage">
+                    <a href="<?= URL ?>editor/create_text_article">
+                        <div class="btnModifyPasswordPage">
+                            <p>Je modifie un article.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
         <?php endif ?>
         <?php if (Tools::isAdministrator()) : ?>
             <div class="infoProfile">

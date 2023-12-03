@@ -20,8 +20,10 @@ switch ($url[1]) {
     case "create_text_article":
         if (isset($_POST['chooseArticle'])) {
             $id_article = Tools::secureHTML($_POST['chooseArticle']);
-        } else {
+        } else if(isset($url[2])){
             $id_article = Tools::secureHTML($url[2]);
+        } else{
+            $id_article = 1;
         }
         $editorController->createTextArticle($id_article);
         break;
