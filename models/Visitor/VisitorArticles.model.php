@@ -5,7 +5,7 @@ require_once("./models/MainManager.model.php");
 
 class VisitorArticlesManager extends MainManager
 {
-    public function getInfosAllarticles()
+    public function getInfosAllArticles()
     {
         $req = "SELECT * FROM articles ORDER BY id_article desc";
         $stmt = $this->getBDD()->prepare($req);

@@ -28,11 +28,6 @@ switch ($url[1]) {
 
 
 
-
-
-
-
-
     case "modify_article":
         $editorController->modifyArticle();
         break;

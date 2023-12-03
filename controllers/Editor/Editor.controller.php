@@ -52,17 +52,17 @@ class EditorController extends MainController
     //  on ajoute le texte à l'article
     public function createTextArticle($id_article)
     {
-        $articles = $this->editorManager->getInfosAllarticles();
-        $article = $this->editorManager->getInfosArticle($id_article);
+        $articles = $this->editorManager->getInfosAllArticles();
+        $chooseArticle = $this->editorManager->getInfosArticle($id_article);
         $themes = $this->editorManager->getAllThemes();
         $data_page = [
             "page_description" => "Page de profil",
             "page_title" => "Page de profil",
             "js" => ['modify_article.js'],
             "themes" => $themes,
-            "article" => $article,
             "articles" => $articles,
-            "view" => "./views/Editor/createTextArticlePage.view.php",
+            "chooseArticle" => $chooseArticle,
+            "view" => "./views/Editor/textArticlePage.view.php",
             "template" => "./views/templates/template.php",
         ];
         $this->functions->generatePage($data_page);
