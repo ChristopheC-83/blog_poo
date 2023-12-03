@@ -6,6 +6,24 @@ switch ($url[1]) {
         $editorController->createCardArticle();
         break;
 
+    case "validation_creation_card_article":
+        // Tools::showArray($_POST);
+        $title = Tools::secureHTML($_POST['title']);
+        $pitch = Tools::secureHTML($_POST['pitch']);
+        $theme = Tools::secureHTML($_POST['theme']);
+        $url = Tools::secureHTML($_POST['url']);
+        $editorController->validationCreateCardArticle($title, $pitch, $theme, $url);
+        break;
+
+
+
+    case "create_text_article":
+        $id_article = Tools::secureHTML($url[2]);
+        $editorController->createTextArticle($id_article);
+        break;
+
+
+
 
 
 

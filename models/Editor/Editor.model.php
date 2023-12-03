@@ -15,22 +15,21 @@ class EditorManager extends VisitorArticlesManager
         return $templates;
     }
 
-    public function validationCardArticleDB($title, $pitch, $theme, $url)  
+    //  creation de la carte article
+    public function createCardArticleDB($title, $pitch, $theme, $url)
     {
-
-        $req = "INSERT INTO articles (titre, pitch, theme, url) VALUES (:titre, :pitch, :theme, :url)";
+        $req = "INSERT INTO articles (title, pitch, theme, url) VALUES (:title, :pitch, :theme, :url)";
         $stmt = $this->getBDD()->prepare($req);
-        $stmt->bindParam(":titre", $title, PDO::PARAM_STR);
+        $stmt->bindParam(":title", $title, PDO::PARAM_STR);
         $stmt->bindParam(":pitch", $pitch, PDO::PARAM_STR);
         $stmt->bindParam(":theme", $theme, PDO::PARAM_STR);
-        // $stmt->bindParam(":templateArticle", $templateArticle, PDO::PARAM_STR);
         $stmt->bindParam(":url", $url, PDO::PARAM_STR);
         $stmt->execute();
         $isCreate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
         return $isCreate;
     }
-   
+
 
     public function updateTemplateArticleDB($id_article, $templateArticle)
     {

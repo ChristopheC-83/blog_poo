@@ -15,12 +15,10 @@ class EditorController extends MainController
         $this->functions = new Functions();
         $this->editorManager = new EditorManager();
     }
-    // ecrire un nouvel article
-    public function createCardArticle()           // A modifier !
+    // ecrire un nouvel article, juste la carte dans un premier temps
+    public function createCardArticle()
     {
-
         $themes = $this->editorManager->getAllThemes();
-
         $data_page = [
             "page_description" => "Page de profil",
             "page_title" => "Page de profil",
@@ -32,7 +30,43 @@ class EditorController extends MainController
         $this->functions->generatePage($data_page);
     }
 
-  
+
+
+    // validation de la création de la carte article
+
+    public function validationCreateCardArticle($title, $pitch, $theme, $url)
+    {
+        $id_article = $this->editorManager->getMaxIdarticle();
+        $id_article = isset($id_article['MAX(id_article)']) ? $id_article['MAX(id_article)'] + 1 : 1;
+     
+        if (
+            $this->editorManager->createCardArticleDB($title, $pitch, $theme, $url)
+        ) {
+            Tools::alertMessage("Article créé avec succés.", "green");
+            header('Location: ' . URL . 'editor/create_text_article/' . $id_article);
+        } else {
+            Tools::alertMessage("Echec de la création de l'article.", "red");
+            header('Location: ' . URL . 'editor/create_card_article');
+        }
+    }
+    //  on ajoute le texte à l'article
+    public function createTextArticle($id_article)
+    {
+        $article = $this->editorManager->getInfosArticle($id_article);
+        $themes = $this->editorManager->getAllThemes();
+        $data_page = [
+            "page_description" => "Page de profil",
+            "page_title" => "Page de profil",
+            "js" => ['new_article.js'],
+            "themes" => $themes,
+            "article" => $article,
+            "view" => "./views/Editor/createTextArticlePage.view.php",
+            "template" => "./views/templates/template.php",
+        ];
+        $this->functions->generatePage($data_page);
+    }
+
+
 
 
 

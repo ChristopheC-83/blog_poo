@@ -1,3 +1,6 @@
+// valider le remplissage des champs du formulaire de création d'article
+// valider l'url de l'article
+
 const btnNewArticleCard = document.querySelector("#btnNewArticleCard");
 const title = document.querySelector("#title");
 const pitch = document.querySelector("#pitch");
