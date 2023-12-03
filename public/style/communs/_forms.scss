@@ -8,12 +8,12 @@
   box-shadow: 1px 1px 15px 5px var(--shadow_1);
   padding: 20px;
   overflow: hidden;
-  @media all and (max-width: 768px){
-  padding: 20px 10px;
+  @media all and (max-width: 768px) {
+    padding: 20px 10px;
   }
-  @media all and (max-width: 350px){
-  padding: 15px 5px;
-  box-shadow: 1px 1px 10px 2px var(--shadow_1);
+  @media all and (max-width: 350px) {
+    padding: 15px 5px;
+    box-shadow: 1px 1px 10px 2px var(--shadow_1);
   }
 }
 
@@ -34,8 +34,11 @@
 
   input,
   select,
-  textarea {
-    width: clamp(250px, 50vw, 800px);
+  textarea,
+  #mytextarea,
+  #mytextarea2 {
+    width: 100%;
+    width: clamp(250px, 50vw, 800px) !important;
     border-radius: 5px;
     padding: 10px;
     outline: none;
@@ -47,10 +50,14 @@
 
   .texteArticle {
     min-height: 150px;
+    width: clamp(250px, 50vw, 800px) !important;
+    margin: 0 auto;
   }
 
   textarea {
     min-height: 300px;
+    width: clamp(250px, 50vw, 800px) !important;
+    margin: 0 auto;
   }
 
   button {
@@ -103,21 +110,20 @@
   @media all and (max-width: 768px) {
     width: 98%;
     margin: 0 auto;
+    align-items: center;
+    justify-content: center;
 
     input,
-    select,label,
-    textarea {
+    select,
+    label,
+    textarea,
+    #mytextarea,
+    #mytextarea2 {
       width: 98%;
-      margin: 0 auto;
     }
-
-    // }
-    // @media all and (max-width: 520px){
-    //   input,
-    //   select,
-    //   textarea {
-    //     width: 85vw;
-    //   }
-    // }
-  }}
-
+    label{
+    text-align: center;
+    margin: 10px;
+    }
+  }
+}

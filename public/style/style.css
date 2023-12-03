@@ -577,8 +577,11 @@ header h2 {
 }
 .entryForm input,
 .entryForm select,
-.entryForm textarea {
-  width: clamp(250px, 50vw, 800px);
+.entryForm textarea,
+.entryForm #mytextarea,
+.entryForm #mytextarea2 {
+  width: 100%;
+  width: clamp(250px, 50vw, 800px) !important;
   border-radius: 5px;
   padding: 10px;
   outline: none;
@@ -589,9 +592,13 @@ header h2 {
 }
 .entryForm .texteArticle {
   min-height: 150px;
+  width: clamp(250px, 50vw, 800px) !important;
+  margin: 0 auto;
 }
 .entryForm textarea {
   min-height: 300px;
+  width: clamp(250px, 50vw, 800px) !important;
+  margin: 0 auto;
 }
 .entryForm button {
   width: clamp(150px, 30vw, 450px);
@@ -642,12 +649,20 @@ header h2 {
   .entryForm {
     width: 98%;
     margin: 0 auto;
+    align-items: center;
+    justify-content: center;
   }
   .entryForm input,
-  .entryForm select, .entryForm label,
-  .entryForm textarea {
+  .entryForm select,
+  .entryForm label,
+  .entryForm textarea,
+  .entryForm #mytextarea,
+  .entryForm #mytextarea2 {
     width: 98%;
-    margin: 0 auto;
+  }
+  .entryForm label {
+    text-align: center;
+    margin: 10px;
   }
 }
 

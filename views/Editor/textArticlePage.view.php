@@ -39,7 +39,7 @@
         </div>
         <div class="entryForm">
             <label for="texte1">Texte 1</label>
-            <textarea id="mytextarea" name="texte1"><?= !empty($chooseArticle['texte1']) ? $chooseArticle['texte1'] : '' ?></textarea>
+            <textarea id="mytextarea" name="texte1" style="width: clamp(250px, 50vw, 800px);margin: 0 auto;"><?= !empty($chooseArticle['texte1']) ? $chooseArticle['texte1'] : '' ?></textarea>
         </div>
         <div class="entryForm">
             <label for="titre2">Titre 2</label>
@@ -47,7 +47,7 @@
         </div>
         <div class="entryForm">
             <label for="texte2">Texte 2</label>
-            <textarea id="mytextarea" name="texte2"><?= !empty($chooseArticle['texte2']) ? $chooseArticle['texte2'] : '' ?></textarea>
+            <textarea id="mytextarea2" name="texte2" style="width: clamp(250px, 50vw, 800px);margin: 0 auto;"><?= !empty($chooseArticle['texte2']) ? $chooseArticle['texte2'] : '' ?></textarea>
         </div>
 
         <div class="entryForm ">
