@@ -1,15 +1,36 @@
-const btnNewPostCard = document.querySelector("#btnNewPostCard");
+const btnNewArticleCard = document.querySelector("#btnNewArticleCard");
 const title = document.querySelector("#title");
 const pitch = document.querySelector("#pitch");
 const url = document.querySelector("#url");
+const badUrl = document.querySelector(".badUrl");
+
+function validateURL(url) {
+  const regex = /^[a-z0-9_]+$/;
+  return regex.test(url);
+}
+
+
+url.addEventListener("keyup", () => {
+  if (validateURL(url.value)) {
+    badUrl.classList.add("noVisibility");
+  } else {
+    badUrl.classList.remove("noVisibility");
+  }
+});
 
 function allFieldsCompleted() {
-  if (title.value !== "" && pitch.value !== "" && url.value !== "") {
-    btnNewPostCard.classList.remove("disabled");
+  if (
+    title.value !== "" &&
+    pitch.value !== "" &&
+    url.value !== "" &&
+    validateURL(url.value)
+  ) {
+    btnNewArticleCard.classList.remove("disabled");
   } else {
-    btnNewPostCard.classList.add("disabled");
+    btnNewArticleCard.classList.add("disabled");
   }
 }
+
 if (title) {
   title.addEventListener("keyup", () => {
     allFieldsCompleted();
@@ -22,9 +43,9 @@ if (title) {
   });
 }
 
-const selectPost = document.querySelector("#selectPost");
-if (selectPost) {
-  selectPost.addEventListener("change", function () {
+const selectArticle = document.querySelector("#selectArticle");
+if (selectArticle) {
+  selectArticle.addEventListener("change", function () {
     document.getElementById("containerNewPostCard").submit();
   });
 }

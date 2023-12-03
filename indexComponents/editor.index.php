@@ -1,10 +1,13 @@
 <?php
 
 switch ($url[1]) {
-        // Page d'écriture d'un article
-    case "write_card_article":
-        $editorController->writeCardArticle();
+        // Page de création d'un article
+    case "create_card_article":
+        $editorController->createCardArticle();
         break;
+
+
+
 
 
 

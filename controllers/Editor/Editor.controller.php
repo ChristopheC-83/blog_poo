@@ -16,21 +16,17 @@ class EditorController extends MainController
         $this->editorManager = new EditorManager();
     }
     // ecrire un nouvel article
-    public function writeCardarticle()           // A modifier !
+    public function createCardArticle()           // A modifier !
     {
 
         $themes = $this->editorManager->getAllThemes();
-        $templateForms = $this->editorManager->getAllTemplates();
-        // Tools::showArray($templates);
-        // Tools::showArray($themes);
 
         $data_page = [
             "page_description" => "Page de profil",
             "page_title" => "Page de profil",
             "js" => ['new_article.js'],
             "themes" => $themes,
-            "templateForms" => $templateForms,
-            "view" => "./views/Editor/writeCardArticlePage.view.php",
+            "view" => "./views/Editor/createCardArticlePage.view.php",
             "template" => "./views/templates/template.php",
         ];
         $this->functions->generatePage($data_page);
@@ -41,12 +37,12 @@ class EditorController extends MainController
 
 
     //  modifier un article ssi écrit par cet editeur
-    public function modifyarticle()
+    public function modifyArticle()
     {
         echo "je modifie un article";
     }
     //  rendre le article invisible, c'est un admin qui le supprimera
-    public function deletearticle()
+    public function deleteArticle()
     {
         echo "je supprime un article";
     }

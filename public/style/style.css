@@ -184,6 +184,10 @@ p {
   display: none;
 }
 
+.noVisibility {
+  visibility: hidden;
+}
+
 .flex {
   display: flex;
 }
@@ -1000,11 +1004,11 @@ header h2 {
   opacity: 0;
 }
 
-.new_post h3 {
+.new_article h3 {
   margin-top: -10px;
   margin-bottom: 40px;
 }
-.new_post .entryForm a {
+.new_article .entryForm a {
   width: clamp(250px, 30vw, 450px);
   text-align: center;
   border: 2px solid black;
@@ -1018,7 +1022,7 @@ header h2 {
   font-weight: bold;
   cursor: pointer;
 }
-.new_post .entryForm a:hover {
+.new_article .entryForm a:hover {
   transform: translateY(3px);
   box-shadow: 0px 1px 1px 0px var(--shadow_1);
   color: var(--text_1);
@@ -1036,6 +1040,12 @@ header h2 {
 
 .inputTextForm {
   margin: 20px 0;
+}
+
+.badUrl {
+  color: red;
+  text-shadow: none;
+  margin: -10px;
 }
 
 @media screen and (max-width: 768px) {

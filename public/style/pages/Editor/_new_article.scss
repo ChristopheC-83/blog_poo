@@ -1,4 +1,4 @@
-.new_post {
+.new_article {
   h3 {
     margin-top: -10px;
     margin-bottom: 40px;
@@ -40,6 +40,13 @@
 
 .inputTextForm{
 margin: 20px 0;
+}
+
+.badUrl{
+  color : red ;
+  text-shadow: none;
+  margin: -10px;
+
 }
 
 @media screen and (max-width:768px) {

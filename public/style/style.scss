@@ -17,7 +17,7 @@
 @import "communs/loader";
 @import "pages/profile";
 @import "pages/newPassword";
-@import "pages/Editor/new_post";
+@import "pages/Editor/new_article";
 @import "pages/Admin/rightsManagement";
 @import "templatesArticles/btnDelete";
 @import "templatesArticles/templateArticle1";
@@ -33,7 +33,8 @@
 // Utilisez les variables de couleur dans votre feuille de style
 
 .body {
-  background: linear-gradient(270deg, var(--bg_1) 0%, var(--components_1) 100%) no-repeat;
+  background: linear-gradient(270deg, var(--bg_1) 0%, var(--components_1) 100%)
+    no-repeat;
   color: var(--text_2);
   width: 100%;
   min-height: 100vh;
