@@ -67,6 +67,24 @@ class EditorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+    //  on modifie la carte de l'article
+    public function modifyCard($id_article)
+    {
+
+        $article = $this->editorManager->getInfosArticle($id_article);
+       
+        $themes = $this->editorManager->getAllThemes();
+        $data_page = [
+            "page_description" => "Page de profil",
+            "page_title" => "Page de profil",
+            "js" => ['new_article.js'],
+            "themes" => $themes,
+            "article" => $article,
+            "view" => "./views/Editor/modifyCardPage.view.php",
+            "template" => "./views/templates/template.php",
+        ];
+        $this->functions->generatePage($data_page);
+    }
 
 
 

@@ -4,7 +4,7 @@
 const btnNewArticleCard = document.querySelector("#btnNewArticleCard");
 const title = document.querySelector("#title");
 const pitch = document.querySelector("#pitch");
-const url = document.querySelector("#url");
+const url = document.querySelector(".url");
 const badUrl = document.querySelector(".badUrl");
 
 function validateURL(url) {

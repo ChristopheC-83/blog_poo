@@ -24,7 +24,7 @@
         </div>
         <div class="entryForm">
             <label for="url">URL article (sans espace ni caractère spécial #éèà?!...)</label>
-            <input type="text" name="url" id="url">
+            <input type="text" name="url" id="url"  class="url">
         </div>
         <h4 class="badUrl noVisibility">Seulement des lettres minuscules et "_".</h4>
 
