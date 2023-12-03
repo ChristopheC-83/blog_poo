@@ -4,7 +4,7 @@
 
     <div class="articleCard <?= $article['theme'] ?>_card">
         <p class="titleCard bold">
-            <?= $article['titre'] ?>
+            <?= $article['title'] ?>
 
 
         </p>
