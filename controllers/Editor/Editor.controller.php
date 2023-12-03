@@ -63,7 +63,7 @@ class EditorController extends MainController
             "articles" => $articles,
             "chooseArticle" => $chooseArticle,
             "view" => "./views/Editor/textArticlePage.view.php",
-            "template" => "./views/templates/template.php",
+            "template" => "./views/templates/templateWritePage.php",
         ];
         $this->functions->generatePage($data_page);
     }
@@ -96,6 +96,19 @@ class EditorController extends MainController
         } else {
             Tools::alertMessage("Echec de la modification de l'article.", "red");
             header('Location: ' . URL . 'editor/modify_card/' . $id_article);
+        }
+    }
+
+    public function validationTextArticle($id_article, $titre1, $texte1, $titre2, $texte2)
+    {
+        if (
+            $this->editorManager->modifyTextArticleDB($id_article, $titre1, $texte1, $titre2, $texte2)
+        ) {
+            Tools::alertMessage("Article modifié avec succés.", "green");
+            header('Location: ' . URL . 'editor/create_text_article/' . $id_article);
+        } else {
+            Tools::alertMessage("Echec de la modification de l'article.", "red");
+            header('Location: ' . URL . 'editor/create_text_article/' . $id_article);
         }
     }
 

@@ -550,10 +550,20 @@ header h2 {
   padding: 20px;
   overflow: hidden;
 }
+@media all and (max-width: 768px) {
+  .containerForm {
+    padding: 20px 10px;
+  }
+}
+@media all and (max-width: 350px) {
+  .containerForm {
+    padding: 15px 5px;
+    box-shadow: 1px 1px 10px 2px var(--shadow_1);
+  }
+}
 
 .entryForm {
   margin: 0 auto;
-  width: fit-content;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -568,7 +578,7 @@ header h2 {
 .entryForm input,
 .entryForm select,
 .entryForm textarea {
-  width: clamp(300px, 50vw, 800px);
+  width: clamp(250px, 50vw, 800px);
   border-radius: 5px;
   padding: 10px;
   outline: none;
@@ -580,8 +590,11 @@ header h2 {
 .entryForm .texteArticle {
   min-height: 150px;
 }
+.entryForm textarea {
+  min-height: 300px;
+}
 .entryForm button {
-  width: clamp(250px, 30vw, 450px);
+  width: clamp(150px, 30vw, 450px);
   border-radius: 10px;
   margin: 20px auto;
   padding: 10px;
@@ -624,6 +637,18 @@ header h2 {
 .entryForm a h4:hover {
   color: var(--text_2);
   transform: scale(1.02);
+}
+@media all and (max-width: 768px) {
+  .entryForm {
+    width: 98%;
+    margin: 0 auto;
+  }
+  .entryForm input,
+  .entryForm select, .entryForm label,
+  .entryForm textarea {
+    width: 98%;
+    margin: 0 auto;
+  }
 }
 
 @keyframes clockwise {

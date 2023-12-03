@@ -42,8 +42,25 @@ switch ($url[1]) {
         $theme = Tools::secureHTML($_POST['theme']);
         $url = Tools::secureHTML($_POST['url']);
         $editorController->validationModificationCardArticle($id_article, $title, $pitch, $theme, $url);
-
         break;
+
+    case "validate_text_article":
+        Tools::showArray($_POST);
+        $id_article = Tools::secureHTML($_POST['id_article']);
+        $titre1 = Tools::secureHTML($_POST['titre1']);
+        $texte1 = Tools::secureHTML($_POST['texte1']);
+        $titre2 = Tools::secureHTML($_POST['titre2']);
+        $texte2 = Tools::secureHTML($_POST['texte2']);
+        $editorController->validationTextArticle($id_article, $titre1, $texte1, $titre2, $texte2);
+        break;
+
+
+
+
+
+
+
+
 
 
 

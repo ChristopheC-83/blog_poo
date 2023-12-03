@@ -54,9 +54,21 @@ class EditorManager extends VisitorArticlesManager
         $stmt->execute();
         $isUpdate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
-        return $isUpdate;
-    
-    
+        return $isUpdate;    
+    }
+
+    public function modifyTextArticleDB($id_article, $titre1, $texte1, $titre2, $texte2){
+        $req = "UPDATE articles SET titre1 = :titre1, texte1 = :texte1, titre2 = :titre2, texte2 = :texte2 WHERE id_article = :id_article";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindParam(":id_article", $id_article, PDO::PARAM_INT);
+        $stmt->bindParam(":titre1", $titre1, PDO::PARAM_STR);
+        $stmt->bindParam(":texte1", $texte1, PDO::PARAM_STR);
+        $stmt->bindParam(":titre2", $titre2, PDO::PARAM_STR);
+        $stmt->bindParam(":texte2", $texte2, PDO::PARAM_STR);
+        $stmt->execute();
+        $isUpdate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isUpdate; 
     
     
     }
