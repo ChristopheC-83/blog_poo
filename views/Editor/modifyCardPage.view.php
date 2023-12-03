@@ -2,8 +2,8 @@
     <h1>Modification de la carte de l'article.</h1>
     <form action="<?= URL ?>editor/modify_card_article/" method="POST" class="containerForm" id="changeArticle">
         <div class="entryForm">
-            <label for="title">ID Article</label>
-            <input type="text" name="title" id="title" value=<?= $article['id_article'] ?> readonly >
+            <label for="id_article">ID Article</label>
+            <input type="text" name="id_article" id="id_article" value=<?= $article['id_article'] ?> readonly >
         </div>
         <div class="entryForm">
             <label for="title">Titre Carte</label>

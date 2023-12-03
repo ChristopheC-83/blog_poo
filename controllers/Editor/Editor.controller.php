@@ -86,6 +86,19 @@ class EditorController extends MainController
         $this->functions->generatePage($data_page);
     }
 
+    public function validationModificationCardArticle($id_article, $title, $pitch, $theme, $url)
+    {
+        if (
+            $this->editorManager->modifyCardArticleDB($id_article, $title, $pitch, $theme, $url)
+        ) {
+            Tools::alertMessage("Article modifié avec succés.", "green");
+            header('Location: ' . URL . 'editor/create_text_article/' . $id_article);
+        } else {
+            Tools::alertMessage("Echec de la modification de l'article.", "red");
+            header('Location: ' . URL . 'editor/modify_card/' . $id_article);
+        }
+    }
+
 
 
 

@@ -33,8 +33,16 @@ switch ($url[1]) {
         $id_article = Tools::secureHTML($url[2]);
         $editorController->modifyCard($id_article);
         break;
+
+        
     case "modify_card_article":
-        Tools::showArray($_POST);
+        $id_article = Tools::secureHTML($_POST['id_article']);
+        $title = Tools::secureHTML($_POST['title']);
+        $pitch = Tools::secureHTML($_POST['pitch']);
+        $theme = Tools::secureHTML($_POST['theme']);
+        $url = Tools::secureHTML($_POST['url']);
+        $editorController->validationModificationCardArticle($id_article, $title, $pitch, $theme, $url);
+
         break;
 
 

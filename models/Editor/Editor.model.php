@@ -42,4 +42,22 @@ class EditorManager extends VisitorArticlesManager
         $stmt->closeCursor();
         return $isUpdate;
     }
+
+    public function modifyCardArticleDB($id_article, $title, $pitch, $theme, $url){
+        $req = "UPDATE articles SET title = :title, pitch = :pitch, theme = :theme, url = :url WHERE id_article = :id_article";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindParam(":id_article", $id_article, PDO::PARAM_INT);
+        $stmt->bindParam(":title", $title, PDO::PARAM_STR);
+        $stmt->bindParam(":pitch", $pitch, PDO::PARAM_STR);
+        $stmt->bindParam(":theme", $theme, PDO::PARAM_STR);
+        $stmt->bindParam(":url", $url, PDO::PARAM_STR);
+        $stmt->execute();
+        $isUpdate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isUpdate;
+    
+    
+    
+    
+    }
 }

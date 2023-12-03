@@ -12,9 +12,9 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <p><b>Theme :</b><?= $chooseArticle['theme'] ?></p>
-            <p><b>Pitch :</b><?= $chooseArticle['pitch'] ?></p>
-            <p><b>URL :</b><?= $chooseArticle['url'] ?></p>
+            <p><b>Theme : </b><?= $chooseArticle['theme'] ?></p>
+            <p><b>Pitch : </b><?= $chooseArticle['pitch'] ?></p>
+            <p><b>URL : </b><?= $chooseArticle['url'] ?></p>
         </div>
         <div class="infoProfile">
             <div class="modifyPasswordPage">
