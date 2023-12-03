@@ -5,7 +5,7 @@
 
 
 
-    <form action="<?= URL ?>editor/validation_creation_card_article" method="GET" class="containerForm" id="containerNewArticleCard">
+    <form action="<?= URL ?>editor/validation_creation_card_article" method="POST" class="containerForm" id="containerNewArticleCard">
         <div class="entryForm">
             <label for="title">Titre Carte</label>
             <input type="text" name="title" id="title">

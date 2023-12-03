@@ -1,7 +1,9 @@
-const chooseArticleForm = document.getElementById('chooseArticleForm');
-const chooseArticleSelect = document.getElementById('chooseArticle');
+const changeArticleForm = document.getElementById('changeArticle');
 
-chooseArticleSelect.addEventListener('change', function() {
-    chooseArticleForm.action = this.value;
-    chooseArticleForm.submit();
-});
+if (changeArticleForm) {
+    const articleSelect = document.getElementById('article');
+
+    articleSelect.addEventListener('change', function() {
+        changeArticleForm.submit();
+    });
+}
